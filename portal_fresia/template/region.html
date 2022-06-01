@@ -1,0 +1,22 @@
+{% extends "main-template.html" %}{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="contenedor" style="max-width: 700px;">
+    <form style="background-color: white;" action="/add-region" method="POST">{% csrf_token %}
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-id" class="form-label">ID</label>
+                <input id="txt-id" name="id" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-nombre" class="form-label">NOMBRE</label>
+                <input id="txt-nombre" name="nombre" class="form-control" />
+                <button type="submit">ENVIAR</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

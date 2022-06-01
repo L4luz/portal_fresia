@@ -1,0 +1,84 @@
+.container .row header img{
+    max-width: 230px;
+    border-radius: 5%;
+}
+.nav {
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    background-color: rgb(166, 204, 191);
+    padding: 1rem;
+}
+.nav .navbar-brand{
+    width: 100%;
+    padding: 0.1rem;
+    margin-left: 1rem;
+   
+}
+footer {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+}
+.icono {
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+}
+.formulario{
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+}
+.quienes_somos{
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    
+}
+img {
+    height: 100%;
+    width: 100%;
+    border-radius: 5%;
+}
+.carousel-item {
+    height:450px;
+    width: 800px;
+    border-radius: 5%;
+}
+.carousel-item img {
+    border-radius: 5%;
+    
+}
+.carousel{margin-top: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    border-radius: 5%;
+    margin-bottom: 2rem;
+}
+.row .card{
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5rem;
+    
+}
+.card img{
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5rem;
+    height:300px;
+    width: 250px;
+    
+}
+
+
+
+
