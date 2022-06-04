@@ -1,0 +1,65 @@
+{% extends "main-template.html" %}{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="contenedor" style="max-width: 700px;">
+    <form style="background-color: white;" action="/add_cliente" method="POST">{% csrf_token %}
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-email" class="form-label">EMAIL</label>
+                <input id="txt-email" name="email" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-rut" class="form-label">RUT</label>
+                <input id="txt-rut" name="rut" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-nombre" class="form-label">NOMBRE</label>
+                <input id="txt-nombre" name="nombre" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-fecha_de_nac" class="form-label">FECHA DE NACIMIENTO</label>
+                <input id="txt-fecha_de_nac" name="fecha_de_nac" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-genero_id_genero" class="form-label">ID GENERO</label>
+                <input id="txt-genero_id_genero" name="genero_id_genero" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-estado_civil_id_estadocivil" class="form-label">ID ESTADO CIVIL</label>
+                <input id="txt-estado_civil_id_estadocivil" name="estado_civil_id_estadocivil" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-id_cliente" class="form-label">ID CLIENTE</label>
+                <input id="txt-id_cliente" name="id_cliente" class="form-control" />
+            </div>
+        </div> <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-wallet_cliente_numero_tarjeta" class="form-label"> NUMERO TARJETA</label>
+                <input id="txt-wallet_cliente_numero_tarjeta" name="wallet_cliente_numero_tarjeta" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <label for="txt-contrasena" class="form-label">CONTRASEÑA</label>
+                <input id="txt-contrasena" name="contrasena" class="form-control" />
+                <button type="submit">ENVIAR</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

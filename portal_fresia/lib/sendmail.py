@@ -2,20 +2,13 @@ import smtplib, os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
-from portal_fresia.api.util.properties import load_properties
 
-#Load Properties
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+#Load PARERNT FOLDER
+BASE_DIR = Path(__file__).resolve().parent.parent
 print('BASE_DIR: {0}'.format(BASE_DIR))
-properties = load_properties(BASE_DIR)
 
-def build_and_send(toList):
+def build_and_send(toList, username, password, smtp_host, smtp_port):
     try:
-        #Load mail properties
-        username = properties['EmailSection']['mail.smtp.user']
-        password = properties['EmailSection']['mail.smtp.password']
-        smtp_host = properties['EmailSection']['mail.smtp.host']
-        smtp_port = properties['EmailSection']['mail.smtp.port']
         subject = "POC SEND SUCCESS MAIL"
         mail_body = ""
         # Read template html

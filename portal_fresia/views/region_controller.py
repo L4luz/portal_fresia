@@ -16,3 +16,9 @@ def add_region(request):
         region.nombre = nombre
         region.save()
     return render(request, 'region.html')
+
+def find_all():
+    return Region.objects.all()
+
+def update(region):
+    region.save(forced_update=True)

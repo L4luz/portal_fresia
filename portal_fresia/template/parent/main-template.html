@@ -13,20 +13,26 @@
 </head>
 <body>
   <div class="container">
-    <div class="row icono">
-    <header class="header col-10" >
-    <img  class="header_logo col-10 " src="{% static 'img/logo_01.png' %}">      
-    </header>   
+    <div class="row">
+      <div class="col-3">
+        <img src="{% static 'img/logo_01.png' %}">      
+      </div>
+      <div class="col-8"></div>
+      <div class="col-1">
+        <br>
+        <br>
+        <a  href="/login"><h3>LOGIN</h3></a>
+      </div>
     </div>
       
     <div class="row nav">
     <nav class="mw-100 navbar  navbar-expand-lg navbar-light bg-light"  >
-      <a class="navbar-brand col"href="home/"><h4>Inicio</h4></a>
-      <a class="navbar-brand col" href="contactanos/"><h4>Contactanos</h4></a>
-      <a class="navbar-brand col" href="productos/"><h4>Productos</h4></a>
-      <a class="navbar-brand col" href="mi_cuenta/"><h4>Mi Cuenta</h4></a>
-      <a class="navbar-brand col" href="quienes_somos/"><h4>Quienes Somos</h4></a>
-      <a class="navbar-brand col" href="galeria/"><h4>Galeria</h4></a>
+      <a class="navbar-brand col"href="/home"><h4>Inicio</h4></a>
+      <a class="navbar-brand col" href="/contactanos"><h4>Contáctanos</h4></a>
+      <a class="navbar-brand col" href="/productos"><h4>Productos</h4></a>
+      <a class="navbar-brand col" href="/mi_cuenta"><h4>Mi Cuenta</h4></a>
+      <a class="navbar-brand col" href="/quienes_somos"><h4>Quiénes Somos</h4></a>
+      <a class="navbar-brand col" href="/galeria"><h4>Galería</h4></a>
     </nav>
     </div>
 
@@ -35,11 +41,11 @@
     {% block content %}
     {% endblock %}
   
+  </div>
 
 <footer >
   <p>Proyecto de titulo analista programador computacional - DuocUc 2022 </p>
 </footer>
-</div>
 
 </body>
 </html>

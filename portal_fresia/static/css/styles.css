@@ -1,6 +1,6 @@
 .container .row header img{
     max-width: 230px;
-    border-radius: 5%;
+    border-radius: 15px;
 }
 .nav {
     justify-content: center;
@@ -42,30 +42,36 @@ footer {
 img {
     height: 100%;
     width: 100%;
-    border-radius: 5%;
+    border-radius: 15px;
 }
 .carousel-item {
     height:450px;
     width: 800px;
-    border-radius: 5%;
+    border-radius: 15px;
 }
 .carousel-item img {
-    border-radius: 5%;
+    border-radius: 15px;
     
 }
 .carousel{margin-top: 0.5rem;
     justify-content: center;
     align-items: center;
     max-width: 100%;
-    border-radius: 5%;
+    border-radius: 15px;
     margin-bottom: 2rem;
 }
+footer{
+    margin-top: 2rem;
+    background-color: rgb(166, 204, 191);
+}
 .row .card{
+    background-color: rgb(166, 204, 191);
     justify-content: center;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     
 }
 .card img{
@@ -79,6 +85,11 @@ img {
     
 }
 
-
+.row .login{
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 

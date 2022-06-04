@@ -16,27 +16,38 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers, serializers, viewsets
-from portal_fresia.api.sendmail import send_success_mail
+
 from portal_fresia.views.contactanos import contactanos
 from portal_fresia.views.galeria import galeria
 from portal_fresia.views.quienes_somos import quienes_somos
 from portal_fresia.views.productos import productos
 from portal_fresia.views.mi_cuenta import mi_cuenta
-from portal_fresia.views.login import login
+from portal_fresia.views.crear_cuenta import crear_cuenta
+from portal_fresia.views.login import login,add_cliente
 from portal_fresia.views.region_controller import index_region, add_region
 from portal_fresia.views.home import index
+from portal_fresia.views.clientes import clientes
+from portal_fresia.views.user_controller import user, user_by_id
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/send-mail/<str:toList>', send_success_mail, name="build_and_send"),
     path('home/', index),
+    path('api/v1/user', user),
+    path('api/v1/user/<int:id>', user_by_id),
     path('', index),
     path('region/', index_region),
     path('add-region', add_region),
+    path('crear_cuenta/', crear_cuenta),
+    path('add_cliente', add_cliente),
     path('contactanos/', contactanos),
     path('galeria/', galeria),
     path('quienes_somos/', quienes_somos),
     path('productos/', productos),
     path('mi_cuenta/', mi_cuenta),
+    path('clientes/',clientes),
     path('login/', login),
+    path('accounts/',include('django.contrib.auth.urls')) 
+    
+
 ]
