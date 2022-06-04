@@ -1,23 +1,27 @@
 from django.contrib import admin
-from portal_fresia.models import Region, Comuna, Compra, EstadoCivil, EstadoEnvio, Genero, Insumo, Material, Producto, ProductoCompra, TipoDocumTribu, TipoPago, TipoProducto
+from portal_fresia.models import Cliente,Compra,Comuna ,Direccion , DocumentoTributario,Envio , EstadoCivil,EstadoEnvio , Genero, Insumo,Invitado 
+from portal_fresia.models import Material,Producto , ProductoCompra,Region ,TarjetaCliente ,TipoDocumTribu ,TipoPago , TipoProducto,TipoTarjeta ,Trabajador 
 
-
-class RegionForm(admin.ModelAdmin):
+class ClienteForm(admin.ModelAdmin):
     def _session_data(self, obj):
         return obj.get_decoded()
     list_display = ['nombre']
 
-admin.site.register(Region, RegionForm)
-
-class ComunaForm(admin.ModelAdmin):
+class GeneroForm(admin.ModelAdmin):
+    def _session_data(self, obj):
+        return obj.get_decoded()
+    list_display = ['nombre']
+class EstadoCivilForm(admin.ModelAdmin):
     def _session_data(self, obj):
         return obj.get_decoded()
     list_display = ['nombre']
 
+admin.site.register(Cliente, ClienteForm)
+admin.site.register(Genero,GeneroForm)
+admin.site.register(EstadoCivil,EstadoCivilForm)
+admin.site.register(TarjetaCliente)
 admin.site.register(Compra)
-admin.site.register(EstadoCivil)
 admin.site.register(EstadoEnvio)
-admin.site.register(Genero)
 admin.site.register(Insumo)
 admin.site.register(Material)
 admin.site.register(Producto)
@@ -25,6 +29,8 @@ admin.site.register(ProductoCompra)
 admin.site.register(TipoDocumTribu)
 admin.site.register(TipoPago)
 admin.site.register(TipoProducto)
+admin.site.register(TipoTarjeta)
+
 
 
 #from.models import Cliente

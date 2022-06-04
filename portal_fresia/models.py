@@ -282,7 +282,7 @@ class Region(models.Model):
 
 class TarjetaCliente(models.Model):
     id_tarjeta_cliente = models.BigAutoField(primary_key=True)
-    numero_tarjeta = models.DecimalField(max_digits=65535, decimal_places=65535)
+    numero_tarjeta = models.DecimalField(max_digits=65535, decimal_places=0)
     fecha_vencimiento = models.DateField()
     codigo_verificacion = models.CharField(max_length=3)
     email = models.CharField(max_length=200, blank=True, null=True)
