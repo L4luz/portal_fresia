@@ -8,7 +8,9 @@ class AreaTrabajo(models.Model):
     class Meta:
         managed = False
         db_table = 'area_trabajo'
-
+        
+    def __str__(self):
+        return str(self.descripcion)
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -93,7 +95,8 @@ class Cliente(models.Model):
     class Meta:
         managed = False
         db_table = 'cliente'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class Compra(models.Model):
     id_compra = models.BigAutoField(primary_key=True)
@@ -112,7 +115,8 @@ class Comuna(models.Model):
     class Meta:
         managed = False
         db_table = 'comuna'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class Direccion(models.Model):
     id_direccion = models.BigAutoField(primary_key=True)
@@ -125,7 +129,8 @@ class Direccion(models.Model):
     class Meta:
         managed = False
         db_table = 'direccion'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -160,7 +165,7 @@ class DjangoMigrations(models.Model):
     class Meta:
         managed = False
         db_table = 'django_migrations'
-
+    
 
 class DjangoSession(models.Model):
     session_key = models.CharField(primary_key=True, max_length=40)
@@ -201,7 +206,8 @@ class EstadoCivil(models.Model):
     class Meta:
         managed = False
         db_table = 'estado_civil'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class EstadoEnvio(models.Model):
     id_estado_envio = models.BigAutoField(primary_key=True)
@@ -210,7 +216,8 @@ class EstadoEnvio(models.Model):
     class Meta:
         managed = False
         db_table = 'estado_envio'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class Genero(models.Model):
     id_genero = models.BigAutoField(primary_key=True)
@@ -219,7 +226,8 @@ class Genero(models.Model):
     class Meta:
         managed = False
         db_table = 'genero'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class Insumo(models.Model):
     id_insumo = models.BigAutoField(primary_key=True)
@@ -228,7 +236,8 @@ class Insumo(models.Model):
     class Meta:
         managed = False
         db_table = 'insumo'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class Invitado(models.Model):
     id_invitado = models.BigAutoField(primary_key=True)
@@ -238,7 +247,8 @@ class Invitado(models.Model):
     class Meta:
         managed = False
         db_table = 'invitado'
-
+    def __str__(self):
+        return str(self.email)
 
 class Material(models.Model):
     id_material = models.BigAutoField(primary_key=True)
@@ -247,7 +257,8 @@ class Material(models.Model):
     class Meta:
         managed = False
         db_table = 'material'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class Producto(models.Model):
     id_producto = models.BigAutoField(primary_key=True)
@@ -260,7 +271,8 @@ class Producto(models.Model):
     class Meta:
         managed = False
         db_table = 'producto'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class ProductoCompra(models.Model):
     id_producto_compra = models.BigAutoField(primary_key=True)
@@ -269,7 +281,7 @@ class ProductoCompra(models.Model):
     class Meta:
         managed = False
         db_table = 'producto_compra'
-
+    
 
 class Region(models.Model):
     id_region = models.BigAutoField(primary_key=True)
@@ -278,21 +290,23 @@ class Region(models.Model):
     class Meta:
         managed = False
         db_table = 'region'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class TarjetaCliente(models.Model):
     id_tarjeta_cliente = models.BigAutoField(primary_key=True)
     numero_tarjeta = models.DecimalField(max_digits=65535, decimal_places=0)
     fecha_vencimiento = models.DateField()
     codigo_verificacion = models.CharField(max_length=3)
-    email = models.CharField(max_length=200, blank=True, null=True)
+    nombre = models.CharField(max_length=200, blank=True, null=True)
     contrasena_cliente = models.CharField(max_length=200)
     id_tipo_tarjeta = models.ForeignKey('TipoTarjeta', models.DO_NOTHING, db_column='id_tipo_tarjeta')
 
     class Meta:
         managed = False
         db_table = 'tarjeta_cliente'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class TipoDocumTribu(models.Model):
     id_tipo_docum_tribu = models.BigAutoField(primary_key=True)
@@ -301,7 +315,8 @@ class TipoDocumTribu(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_docum_tribu'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class TipoPago(models.Model):
     id_tipo_pago = models.BigAutoField(primary_key=True)
@@ -310,7 +325,8 @@ class TipoPago(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_pago'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class TipoProducto(models.Model):
     id_tipo_producto = models.BigAutoField(primary_key=True)
@@ -319,7 +335,8 @@ class TipoProducto(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_producto'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class TipoTarjeta(models.Model):
     id_tipo_tarjeta = models.BigAutoField(primary_key=True)
@@ -328,7 +345,8 @@ class TipoTarjeta(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_tarjeta'
-
+    def __str__(self):
+        return str(self.nombre)
 
 class Trabajador(models.Model):
     id_trabajador = models.BigAutoField(primary_key=True)
@@ -343,3 +361,5 @@ class Trabajador(models.Model):
     class Meta:
         managed = False
         db_table = 'trabajador'
+    def __str__(self):
+        return str(self.nombre)
