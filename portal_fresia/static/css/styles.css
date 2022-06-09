@@ -96,3 +96,9 @@ footer{
     color: rgb(166, 204, 191);
     font-weight: 900;
 }
+
+.b  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
