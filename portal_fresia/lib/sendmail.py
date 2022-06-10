@@ -7,7 +7,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 print('BASE_DIR: {0}'.format(BASE_DIR))
 
-def build_and_send(toList, username, password, smtp_host,  smtp_port):
+def build_and_send(toList, username, password, smtp_host, smtp_port):
     try:
         subject = "POC SEND SUCCESS MAIL"
         mail_body = ""
