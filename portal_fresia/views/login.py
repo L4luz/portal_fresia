@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from portal_fresia.models import Region
+from portal_fresia.models import Genero, Region
 from portal_fresia.models import Cliente
 
 def login(request):
@@ -32,3 +32,4 @@ def add_cliente(request):
         login.wallet_cliente_numero_tarjeta = wallet_cliente_numero_tarjeta
         login.save()
     return render(request, 'login.html')
+
