@@ -1,7 +1,7 @@
 {% extends "main-template.html" %}{% load static %}
 {% block title %}{% endblock %}
 {% block content %}
-<h2 class="" style="margin-bottom: 50px;margin-top: 20px; text-align: center;">Crear Cuenta :</h2>
+
 <form method="POST" action=".">{% csrf_token %}
         <div class="row">
             {% if estado %}
@@ -64,32 +64,43 @@
 
     <div class="row">
         <div class="col-6">
-            <div class="form-group">
-                <label class="white-text" for="txt-id-estado-civil">Estado Civil  :</label>
-                <select id="txt-id-estado-civil" name="id-estado-civil" class="form-select" aria-label="Seleccionar Estado Civil">
-                    {% if estados_civiles %}
-                    {% for estadoCivil in estados_civiles %}
-                    <option value="{{id_estado_civil}}">{{estadoCivil.nombre}}</option>
-                    {% endfor %}
-                    {% endif %}
-                </select>    
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group">
-                <label class="white-text" for="txt-id-tarjeta-cliente">Tarjeta Cliente :</label>
-                <select id="txt-id-tarjeta-cliente" name="id-tarjeta-cliente" class="form-select" aria-label="Seleccionar Tarjeta">
-                    {% if tarjetas_clientes %}
-                    {% for tarj in tarjetas_clientes %}
-                    <option value="{{id_tarjeta_cliente}}">{{tarj.nombre}}</option>
-                    {% endfor %}
-                    {% endif %}
-                </select>    
-            </div>
-        </div>
-
+        <div class="form-group">
+        <label class="white-text" for="txt-id-estado-civil">Estado Civil ID :</label>
+        <select name="id-estado-civil" id="txt-id-estado-civil" class="form-select" aria-label="Seleccionar Estado Civil">
+            {% if estados_civiles %}
+            {% for estadoCivil in estados_civiles %}
+            <option value="{{estadoCivil.id_estado_civil}}">{{estadoCivil.nombre}}</option>
+            {% endfor %}
+            {% endif %}
+        </select>  
+    </div>
+    </div>
+    <div class="form-group">
+        <label class="white-text" for="txt-id-tarjeta-cliente">Tarjeta Cliente  ID:</label>
+        <select name="id-tarjeta-cliente" id="txt-id-tarjeta-cliente" class="form-select" aria-label="Seleccionar Tarjeta de Cliente">
+            {% if tarjetas_clientes %}
+            {% for tarjetaCliente in tarjetas_clientes %}
+            <option value="{{tarjetaCliente.id_tarjeta_cliente}}">{{tarjetaCliente.nombre}}</option>
+            {% endfor %}
+            {% endif %}
+        </select>  
     </div>
 
+    </div>
+   
+   
+    
+    
+  
+<!--
+    <div class="form-group">
+        <label class="white-text" for="txt-id-estado-civil">Estado Civil ID :</label>
+        <input type="text" name="id-estado-civil" id="txt-id-estado-civil">
+    </div>
+    <div class="form-group">
+        <label class="white-text" for="txt-id-tarjeta-cliente">Tarjeta Cliente  ID:</label>
+        <input type="text" name="id-tarjeta-cliente" id="txt-id-tarjeta-cliente">
+    </div>-->
     <div class="form-group">
         <button type="submit" class="btn btn-md btn-dark">Guardar</button>
     </div>

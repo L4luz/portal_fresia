@@ -18,7 +18,7 @@ def crear_cuenta(request):
 
     return render(request, 'crear_cuenta.html',  {'generos': generos,'estados_civiles': estados_civiles,'tarjetas_clientes': tarjetas_clientes, 'estado': estado, 'mensaje' : mensaje})
 
-#@appcontext_popped.route('/add_contact',methods=['POST'])
+
 def add_contact(request):
     email=request.POST.get('email')
     rut=request.POST.get('rut')
@@ -26,8 +26,8 @@ def add_contact(request):
     nombre=request.POST.get('nombre')
     fecha_de_nac=request.POST.get('fecha-de-nac')
     id_genero=request.POST.get('id_genero')
-    id_estado_civil=request.POST.get('id_estado_civil')
-    id_tarjeta_cliente=request.POST.get('id_tarjeta_cliente')
+    id_estado_civil=request.POST.get('id-estado-civil')
+    id_tarjeta_cliente=request.POST.get('id-tarjeta-cliente')
 
     print('email', email)
     print('rut', rut)
