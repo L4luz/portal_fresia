@@ -5,19 +5,20 @@
 <form method="POST" action=".">{% csrf_token %}
         <div class="row">
             {% if estado %}
-            <div class="alert alert-primary" role="alert">
+            <div style="width: 97%; text-align: center; margin-top: 10px;" class="alert alert-primary" role="alert">
                 {{mensaje}}
             </div>
             {% endif %}
         </div>
-    <div class="row">
-        <div class="col-6">
+<h2 class="" style="margin-top:30px; margin-bottom: 50px;text-align: center;">Crea tu Cuenta :</h2>
+<div class="form-row">
+        <div class="form-group col-md-6">
             <div class="form-group">
                 <label class="white-text" for="txt-email">Email :</label>
-                <input type="text" name="email" id="txt-email">
+                <input type="email" name="email" id="txt-email">
             </div>
         </div>
-        <div class="col-6">
+        <div class="form-group col-md-6">
             <div class="form-group">
                 <label class="white-text" for="txt-rut">Rut :</label>
                 <input type="text" name="rut" id="txt-rut">
@@ -25,14 +26,14 @@
         </div>
 
     </div>
-    <div class="row">
-        <div class="col-6">
+    <div class="form-row">
+        <div class="form-group col-md-6">
             <div class="form-group">
                 <label class="white-text" for="txt-contrasena">Contraseña :</label>
                 <input type="text" name="contrasena" id="txt-contrasena">
             </div>
         </div>
-        <div class="col-6">
+        <div class="form-group col-md-6">
             <div class="form-group">
                 <label class="white-text" for="txt-nombre">Nombre :</label>
                 <input type="text" name="nombre" id="txt-nombre">
@@ -40,14 +41,14 @@
         </div>
 
     </div>
-    <div class="row">
-        <div class="col-6">
+    <div class="form-row">
+        <div class="form-group col-md-6">
             <div class="form-group">
                 <label class="white-text" for="txt-fecha-de-nac">Fecha Nacimiento  ej(1999-09-09) :</label>
                 <input type="text" name="fecha-de-nac" id="txt-fecha-de-nac">
             </div>
         </div>
-        <div class="col-6">
+        <div class="form-group col-md-6">
             <div class="form-group">
                 <label class="white-text" for="txt-id-genero">Genero ID :</label>
                 <select id="txt-id-genero" name="id_genero" class="form-select" aria-label="Seleccionar Genero">
@@ -62,7 +63,7 @@
 
     </div>
 
-    <div class="row">
+    <div class="form-row">
         <div class="col-6">
         <div class="form-group">
         <label class="white-text" for="txt-id-estado-civil">Estado Civil ID :</label>
@@ -87,21 +88,7 @@
     </div>
 
     </div>
-   
-   
-    
-    
-  
-<!--
-    <div class="form-group">
-        <label class="white-text" for="txt-id-estado-civil">Estado Civil ID :</label>
-        <input type="text" name="id-estado-civil" id="txt-id-estado-civil">
-    </div>
-    <div class="form-group">
-        <label class="white-text" for="txt-id-tarjeta-cliente">Tarjeta Cliente  ID:</label>
-        <input type="text" name="id-tarjeta-cliente" id="txt-id-tarjeta-cliente">
-    </div>-->
-    <div class="form-group">
+    <div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
         <button type="submit" class="btn btn-md btn-dark">Guardar</button>
     </div>
 </form>
