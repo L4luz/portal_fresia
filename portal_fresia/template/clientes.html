@@ -1,38 +1,38 @@
 {% extends "main-template.html" %}{% load static %}
 {% block title %}Clientes{% endblock %}
 {% block content %}
-    <div class="container py-4">
-        <div class="row">
-            <div class="col-md-4">
 
-            </div>
-            <div class="col-md-8">
-                <h2>Listado de Clientes</h2>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Contraseña</th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            {% for c in clientes %}
-                            <tr>
-                                <td>{{forloop.counter}}</td>
-                                <td>{{c.nombre}}</td>
-                                <td>{{c.contrasena}}</td>
-                            </tr>
-                            {% endfor %}
-                
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-    </div>
-  
+<div class="text-center-aling">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Rut</th>
+        <th scope="col">Email</th>
+        <th scope="col">Contrasena</th>
+        <th scope="col">Fecha Nacimiento</th>
+        <th scope="col">Genero ID</th>
+        <th scope="col">Estado Civil</th>
+        <th scope="col">Tarjeta ID</th>
+      </tr>
+    </thead>
+   <tbody>
+      {% for element in contacts %}
+      <tr>
+        <th scope="row">{{element.id_cliente}}</th>
+        <td>{{element.nombre}}</td>
+        <td>{{element.rut}}</td>
+        <td>{{element.email}}</td>
+        <td>{{element.contrasena}}</td>
+        <td>{{element.fecha_de_nac}}</td>
+        <td>{{element.id_genero_id}}</td>
+        <td>{{element.id_estado_civil_id}}</td>
+        <td>{{element.id_tarjeta_cliente_id}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}

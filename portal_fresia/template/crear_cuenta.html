@@ -1,61 +1,110 @@
 {% extends "main-template.html" %}{% load static %}
 {% block title %}{% endblock %}
 {% block content %}
-<div class="contenedor" style="max-width: 700px;">
-    <form style="background-color: white;" action="/add_cliente" method="POST">{% csrf_token %}
-        <div class="form-group row">
-            <div class="col-lg-12">
-                <label for="txt-nombre" class="form-label">NOMBRE</label>
-                <input id="txt-nombre" name="nombre" class="form-control" />
+
+<form method="POST" action=".">{% csrf_token %}
+        <div class="row">
+            {% if estado %}
+            <div class="alert alert-primary" role="alert">
+                {{mensaje}}
+            </div>
+            {% endif %}
+        </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label class="white-text" for="txt-email">Email :</label>
+                <input type="text" name="email" id="txt-email">
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-lg-12">
-                <label for="txt-email" class="form-label">EMAIL</label>
-                <input id="txt-email" name="email" class="form-control" />
+        <div class="col-6">
+            <div class="form-group">
+                <label class="white-text" for="txt-rut">Rut :</label>
+                <input type="text" name="rut" id="txt-rut">
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-lg-12">
-                <label for="txt-rut" class="form-label">RUT</label>
-                <input id="txt-rut" name="rut" class="form-control" />
+
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label class="white-text" for="txt-contrasena">Contraseña :</label>
+                <input type="text" name="contrasena" id="txt-contrasena">
             </div>
         </div>
-     
-        </div>
-        <div class="form-group row">
-            <div class="col-lg-12">
-                <label for="txt-fecha_de_nac" class="form-label">FECHA DE NACIMIENTO</label>
-                <input id="txt-fecha_de_nac" name="fecha_de_nac" class="form-control" />
+        <div class="col-6">
+            <div class="form-group">
+                <label class="white-text" for="txt-nombre">Nombre :</label>
+                <input type="text" name="nombre" id="txt-nombre">
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-lg-12">
-                <label for="txt-genero_id_genero" class="form-label">ID GENERO</label>
-                <input id="txt-genero_id_genero" name="genero_id_genero" class="form-control" />
+
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label class="white-text" for="txt-fecha-de-nac">Fecha Nacimiento  ej(1999-09-09) :</label>
+                <input type="text" name="fecha-de-nac" id="txt-fecha-de-nac">
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-lg-12">
-                <label for="txt-estado_civil_id_estadocivil" class="form-label">ID ESTADO CIVIL</label>
-                <input id="txt-estado_civil_id_estadocivil" name="estado_civil_id_estadocivil" class="form-control" />
+        <div class="col-6">
+            <div class="form-group">
+                <label class="white-text" for="txt-id-genero">Genero ID :</label>
+                <select id="txt-id-genero" name="id_genero" class="form-select" aria-label="Seleccionar Genero">
+                    {% if generos %}
+                    {% for genero in generos %}
+                    <option value="{{genero.id_genero}}">{{genero.nombre}}</option>
+                    {% endfor %}
+                    {% endif %}
+                </select>    
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-lg-12">
-                <label for="txt-id_cliente" class="form-label">ID CLIENTE</label>
-                <input id="txt-id_cliente" name="id_cliente" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-lg-12">
-                <label for="txt-contrasena" class="form-label">CONTRASEÑA</label>
-                <input id="txt-contrasena" name="contrasena" class="form-control" />
-            </div>
-        </div>
-        <button class= "btn btn-outline-info" type="submit">ENVIAR</button>
-    </form>
-</div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+        <div class="form-group">
+        <label class="white-text" for="txt-id-estado-civil">Estado Civil ID :</label>
+        <select name="id-estado-civil" id="txt-id-estado-civil" class="form-select" aria-label="Seleccionar Estado Civil">
+            {% if estados_civiles %}
+            {% for estadoCivil in estados_civiles %}
+            <option value="{{estadoCivil.id_estado_civil}}">{{estadoCivil.nombre}}</option>
+            {% endfor %}
+            {% endif %}
+        </select>  
+    </div>
+    </div>
+    <div class="form-group">
+        <label class="white-text" for="txt-id-tarjeta-cliente">Tarjeta Cliente  ID:</label>
+        <select name="id-tarjeta-cliente" id="txt-id-tarjeta-cliente" class="form-select" aria-label="Seleccionar Tarjeta de Cliente">
+            {% if tarjetas_clientes %}
+            {% for tarjetaCliente in tarjetas_clientes %}
+            <option value="{{tarjetaCliente.id_tarjeta_cliente}}">{{tarjetaCliente.nombre}}</option>
+            {% endfor %}
+            {% endif %}
+        </select>  
+    </div>
+
+    </div>
+   
+   
+    
+    
+  
+<!--
+    <div class="form-group">
+        <label class="white-text" for="txt-id-estado-civil">Estado Civil ID :</label>
+        <input type="text" name="id-estado-civil" id="txt-id-estado-civil">
+    </div>
+    <div class="form-group">
+        <label class="white-text" for="txt-id-tarjeta-cliente">Tarjeta Cliente  ID:</label>
+        <input type="text" name="id-tarjeta-cliente" id="txt-id-tarjeta-cliente">
+    </div>-->
+    <div class="form-group">
+        <button type="submit" class="btn btn-md btn-dark">Guardar</button>
+    </div>
+</form>
 
 
 

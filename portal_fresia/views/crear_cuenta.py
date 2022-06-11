@@ -1,38 +1,54 @@
-from django.shortcuts import render
-from portal_fresia.models import Cliente
-def crear_cuenta(request):
-    return render(request, 'crear_cuenta.html')
 
-def add_cliente(request):
-    print('add_cliente INIT')
+
+
+from django import apps
+from django.shortcuts import render
+from flask import appcontext_popped, render_template, request
+from portal_fresia.models import Cliente, Genero, EstadoCivil, TarjetaCliente
+from portal_fresia.ws.cliens_ws import find_all
+
+def crear_cuenta(request):
+    estado = False
+    mensaje = None
     if request.method == 'POST':
-        email = request.POST.get('email')
-        rut = request.POST.get('rut')
-        nombre = request.POST.get('nombre')
-        fecha_de_nac = request.POST.get('fecha_de_nac')
-        genero_id_genero = request.POST.get('genero_id_genero')
-        estado_civil_id_estadocivil = request.POST.get('estado_civil_id_estadocivil')
-        id_cliente = request.POST.get('id_cliente')
-        wallet_cliente_numero_tarjeta = request.POST.get('wallet_cliente_numero_tarjeta')
-        contrasena = request.POST.get('contrasena')
-        print('email: ', email)
-        print('rut: ', rut)
-        print('nombre: ', nombre)
-        print('fecha_de_nac: ', fecha_de_nac)
-        print('genero_id_genero: ', genero_id_genero)
-        print('estado_civil_id_estadocivil: ', estado_civil_id_estadocivil)
-        print('id_cliente: ', id_cliente)
-        print('wallet_cliente_numero_tarjeta: ', wallet_cliente_numero_tarjeta)
-        print('contrasena: ', contrasena)
-        crear_cuenta = Cliente()
-        crear_cuenta.email = email
-        crear_cuenta.rut = rut
-        crear_cuenta.nombre = nombre
-        crear_cuenta.fecha_de_nac = fecha_de_nac
-        crear_cuenta.genero_id_genero = genero_id_genero
-        crear_cuenta.estado_civil_id_estadocivil = estado_civil_id_estadocivil
-        crear_cuenta.id_cliente = id_cliente
-        crear_cuenta.wallet_cliente_numero_tarjeta = wallet_cliente_numero_tarjeta
-        crear_cuenta.contrasena = contrasena
-        crear_cuenta.save()
-    return render(request, 'index.html')
+        estado, mensaje = add_contact(request)
+    generos = Genero.objects.all()
+    estados_civiles = EstadoCivil.objects.all()
+    tarjetas_clientes = TarjetaCliente.objects.all()
+
+    return render(request, 'crear_cuenta.html',  {'generos': generos,'estados_civiles': estados_civiles,'tarjetas_clientes': tarjetas_clientes, 'estado': estado, 'mensaje' : mensaje})
+
+
+def add_contact(request):
+    email=request.POST.get('email')
+    rut=request.POST.get('rut')
+    contrasena=request.POST.get('contrasena')
+    nombre=request.POST.get('nombre')
+    fecha_de_nac=request.POST.get('fecha-de-nac')
+    id_genero=request.POST.get('id_genero')
+    id_estado_civil=request.POST.get('id-estado-civil')
+    id_tarjeta_cliente=request.POST.get('id-tarjeta-cliente')
+
+    print('email', email)
+    print('rut', rut)
+    print('contrasena', contrasena)
+    print('nombre', nombre)
+    print('fecha_de_nac', fecha_de_nac)
+    print('id_genero', id_genero)
+    print('id_estado_civil', id_estado_civil)
+    print('id_tarjeta_cliente', id_tarjeta_cliente)
+    cliente = Cliente()
+    cliente.email = email
+    cliente.rut = rut
+    cliente.contrasena = contrasena
+    cliente.nombre = nombre
+    cliente.fecha_de_nac = fecha_de_nac
+    cliente.id_genero = Genero.objects.get(pk=id_genero)
+    cliente.id_estado_civil = EstadoCivil.objects.get(pk=id_estado_civil)
+    cliente.id_tarjeta_cliente = TarjetaCliente.objects.get(pk=id_estado_civil)
+
+    try:
+        cliente.save()
+        return True, "Cliente creado con exito"
+    except Exception as e:
+       print(e)
