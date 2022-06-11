@@ -6,6 +6,7 @@ from django.shortcuts import render
 from flask import appcontext_popped, render_template, request
 from portal_fresia.models import Cliente, Genero, EstadoCivil, TarjetaCliente
 from portal_fresia.ws.cliens_ws import find_all
+from django.contrib.auth.models import User
 
 def crear_cuenta(request):
     estado = False
@@ -46,9 +47,17 @@ def add_contact(request):
     cliente.id_genero = Genero.objects.get(pk=id_genero)
     cliente.id_estado_civil = EstadoCivil.objects.get(pk=id_estado_civil)
     cliente.id_tarjeta_cliente = TarjetaCliente.objects.get(pk=id_estado_civil)
+    
+    user = User()
+    user.username = email
+    user.set_password(contrasena)
+
+    
 
     try:
         cliente.save()
+        user.save()
         return True, "Cliente creado con exito"
+
     except Exception as e:
        print(e)

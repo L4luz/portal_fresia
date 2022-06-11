@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from re import I
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers, serializers, viewsets
@@ -21,15 +22,18 @@ from portal_fresia.views.contactanos import contactanos
 from portal_fresia.views.galeria import galeria
 from portal_fresia.views.quienes_somos import quienes_somos
 from portal_fresia.views.productos import productos
-from portal_fresia.views.login import login,add_cliente
+from portal_fresia.views.login import login
 from portal_fresia.views.region_controller import index_region, add_region
 from portal_fresia.views.home import index
+from portal_fresia.views.pago import pago
+from portal_fresia.views.cart import cart
 from portal_fresia.views.crear_cuenta import crear_cuenta
 from portal_fresia.views.crear_cuenta import add_contact
 from portal_fresia.views.clientes import clientes
+from portal_fresia.views.transbankpay import commitpay,webpay_plus_create
 from portal_fresia.views.user_controller import user, user_by_id
 from portal_fresia.ws.cliens_ws import find_client_all,add_client
-
+from portal_fresia.views.transbankpay import webpay_plus_create
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,7 +44,6 @@ urlpatterns = [
     path('', index),
     path('region/', index_region),
     path('add-region', add_region),
-    path('add_cliente', add_cliente),
     path('contactanos/', contactanos),
     path('galeria/', galeria),
     path('quienes_somos/', quienes_somos),
@@ -49,6 +52,10 @@ urlpatterns = [
     path('add_contact/', add_contact),
     path('clientes/',clientes),
     path('login/', login),
+    path('pago/', pago),
+    path('cart/', cart),
+    path('commit-pay/', commitpay),
+    path('webpay-plus-create', webpay_plus_create),  
     path('accounts/',include('django.contrib.auth.urls')) 
     
 
