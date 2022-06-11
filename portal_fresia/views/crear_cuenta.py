@@ -3,7 +3,7 @@
 
 from django import apps
 from django.shortcuts import render
-from flask import appcontext_popped, render_template, request
+
 from portal_fresia.models import Cliente, Genero, EstadoCivil, TarjetaCliente
 from portal_fresia.ws.cliens_ws import find_all
 from django.contrib.auth.models import User

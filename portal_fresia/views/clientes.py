@@ -1,6 +1,6 @@
 from socket import timeout
 from django.shortcuts import render
-from flask import request
+
 #from portal_fresia.models import Cliente
 
 def clientes(request):

@@ -10,42 +10,41 @@
             </div>
             {% endif %}
         </div>
-<h2 class="" style="margin-top:30px; margin-bottom: 50px;text-align: center;">Crea tu Cuenta :</h2>
-<div class="form-row">
+<h2 class="" style="margin-top:30px; margin-bottom: 50px;text-align: center;">Crea tu Cuenta</h2>
+<div class="row formulario"> 
+    <div class="form-row">
         <div class="form-group col-md-6">
-            <div class="form-group">
                 <label class="white-text" for="txt-email">Email :</label>
-                <input type="email" name="email" id="txt-email">
-            </div>
+                <input type="email" name="email" class="form-control" id="txt-email">
         </div>
         <div class="form-group col-md-6">
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label class="white-text" for="txt-rut">Rut :</label>
-                <input type="text" name="rut" id="txt-rut">
+                <input type="text" name="rut" class="form-control" id="txt-rut">
             </div>
         </div>
 
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <div class="form-group">
-                <label class="white-text" for="txt-contrasena">Contraseña :</label>
-                <input type="text" name="contrasena" id="txt-contrasena">
-            </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <div class="form-group col-md-6">
+                    <label class="white-text" for="txt-contrasena">Contraseña :</label>
+                    <input type="text" name="contrasena" class="form-control" id="txt-contrasena">
+                </div>
+            </div>
         <div class="form-group col-md-6">
             <div class="form-group">
                 <label class="white-text" for="txt-nombre">Nombre :</label>
-                <input type="text" name="nombre" id="txt-nombre">
+                <input type="text" name="nombre" class="form-control" id="txt-nombre">
             </div>
         </div>
 
-    </div>
+    </div>  
     <div class="form-row">
         <div class="form-group col-md-6">
             <div class="form-group">
-                <label class="white-text" for="txt-fecha-de-nac">Fecha Nacimiento  ej(1999-09-09) :</label>
-                <input type="text" name="fecha-de-nac" id="txt-fecha-de-nac">
+                <label class="white-text" for="txt-fecha-de-nac"> Fecha Nacimiento</label>
+                <input type="text" name="fecha-de-nac" class="form-control"  id="txt-fecha-de-nac" placeholder="1999-01-01">
             </div>
         </div>
         <div class="form-group col-md-6">
@@ -88,11 +87,11 @@
     </div>
 
     </div>
-    <div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
-        <button type="submit" class="btn btn-md btn-dark">Guardar</button>
-    </div>
+
 </form>
-
-
+</div>
+<div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
+    <button type="submit" class="btn btn-md btn-outline-info">Guardar</button>
+</div>
 
 {% endblock %}
