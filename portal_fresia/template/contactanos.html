@@ -3,55 +3,31 @@
 {% block content %}
  <div class="row formulario">
 <form id="frm-enviar-contacto" action="" method="POST"> {% csrf_token %}
-    <div class="form-row">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="txt-nombre">Nombre</label>
+      <input type="nombre" name="nombre" class="form-control" id="txt-nombre" placeholder="Nombre">
+    </div>
+    
+  </div>
+  
+  <div class="form-row">
       <div class="form-group col-md-6">
         <label for="txt-email">Email</label>
         <input type="email" name="mail" class="form-control" id="txt-email" placeholder="Email">
       </div>
-      <div class="form-group col-md-6">
-<<<<<<< HEAD
-        <label for="textarea">Comentarios:</label>
-        <textarea name="comentarios" class="form-control"  rows="10" cols="80">Escribe aquí tus comentarios</textarea>
-
-        <label for="inputPassword4">Password</label>
-        <input type="password" name="password" class="form-control" id="inputPassword4" placeholder="Password">
-
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputAddress">Address</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-    </div>
-    <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+      
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity">
+        <label for="textarea">Comentarios:</label>
+        <textarea name="comentarios"  class="form-control" id="txt-comentarios" placeholder="Danos tu opinion" rows="10" cols="80"></textarea>
       </div>
-      <div class="form-group col-md-4">
-        <label for="inputState">State</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="inputZip">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
-      </div>
+
     </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          Check me out
-        </label>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
+    <button type="submit" class="btn btn-md btn-outline-info">Enviar</button>
+  </div>
   </form>
 </div>
 {% endblock %}
