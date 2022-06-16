@@ -3,34 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap/icons/bootstrap-icons.css' %}">
+    
     <title>{% block title %}{% endblock %}</title>
 
 </head>
+
 <body>
-  <div class="container">
+ 
     <div class="row">
-      <div class="col-3">
-        <img src="{% static 'img/logo_01.png' %}">      
+      <div class="col-4"></div>
+      <div class="col-2">
+        <img src="{% static 'img/logo_01.png' %}" style="max-width: 200px;">      
       </div>
-      <div class="col-7"></div>
-      <div class="col-1">
-        <br>
-        <br>
-        <a  href="/login"><h3>Mi Cuenta</h3></a>
-      </div>
-      <div class="col-1">
-        <br>
-        <br>
-        <a   href="/cart"><h3>Carrito de compra</h3></a>
-      </div>
-    </div>
+      <div class="col-4"></div>
       
-    <div class="row nav">
+    </div>
+    <header>
+      <!-- NAVBAR MENU-->
+      <nav class="navbar navbar-dark "  style="background-color: rgb(166, 204, 191)">
+        <div class="container-fluid">
+          <!-- MENU -->
+          <div class="">
+            
+            {% if user.is_authenticated %}
+            <button class="btn btn-outline-primary ms-2 bi bi-microsoft" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvas-menu" aria-controls="offcanvas-menu "></button>
+            {% endif %}
+          </div>
+          
+          <a class="navbar-brand col"href="/home"><h4>Inicio</h4></a>
+          <a class="navbar-brand col" href="/contactanos"><h4>Contáctanos</h4></a>
+          <a class="navbar-brand col" href="/productos"><h4>Productos</h4></a>
+          <a class="navbar-brand col" href="/quienes_somos"><h4>Quiénes Somos</h4></a>
+          <a class="navbar-brand col" href="/galeria"><h4>Galería</h4></a>
+      
+      
+      <a href="/cart"><img style="width: 40px; margin-right: 30px;" src="{% static 'img/icon/CARRITO.png' %}" alt=""></a>
+          <!--LOGIN BUTTON -->
+          <button class="btn btn-outline-success ml-auto bi bi-person-circle" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvas-right" aria-controls="offcanvasRight"></button>
+  
+        </div>
+      </nav>
+      {% if user.is_authenticated %}
+      <!-- OFFCANVAS MENU-->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas-menu" aria-labelledby="offcanvas-menu-label">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvas-menu-label"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="icon">
+            <img src="{% static 'img/icon/settings.png' %}" alt="">
+          </div>
+          <div class="offcanvas-menu">
+            {% if perms.country.view_country %}
+            <ul class="option" aria-labelledby="dropdown-menu-button">
+              <li class=""><a class="" href="/country">Country</a></li>
+            </ul>
+            {% endif %}
+          </div>
+          
+        </div>
+      </div>
+      {% endif %}
+      <!-- OFFCANVAS LOGIN-->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-right" aria-labelledby="offcanvas-right-label">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvas-right-label"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        {% if user.is_authenticated %}  
+        <div class="offcanvas-body">
+          <div class="icon">
+            <img src="{% static 'img/icon/man.png' %}" alt="">         
+          </div>
+          <div class="user-data-login">
+            <p>{{ user.email }}</p>
+            <p>{{ user.username }}</p>
+            <p>{{ user.first_name}} {{ user.last_name}}</p>
+          </div>
+          <div class="offcanvas-login">
+            <ul class="option" aria-labelledby="dropdown-login-button">
+              <li class=""><a class="" href="/edit-user">EDIT</a></li>
+            </ul>
+            <form method="POST" action="/logout">{% csrf_token %}
+                <button class="btn btn-outline-primary ms-2 bi bi-door-open" type="submit"></button>                        
+            </form>            
+          </div>       
+        </div>
+        {% else %}          
+        <div class="offcanvas-body">
+          <form method="POST" action="/login">{% csrf_token %}
+            <div class="mb-3">
+              <label for="txt-username" class="form-label">User</label>
+              <input type="text" required class="form-control" id="txt-username" name="username" aria-describedby="emailHelp"
+                placeholder="Username">
+            </div>
+            <div class="mb-3">
+              <label for="txt-password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="txt-password" name="password" required placeholder="**********">
+            </div>
+            <div class="mb-3">
+              <a href="/crear_cuenta">Crear Cuenta</a>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        {% endif %}          
+      </div>
+    </header>
+
+
+
+   <!-- <div class="row nav">
     <nav class="mw-100 navbar  navbar-expand-lg navbar-light bg-light"  >
       <a class="navbar-brand col"href="/home"><h4>Inicio</h4></a>
       <a class="navbar-brand col" href="/contactanos"><h4>Contáctanos</h4></a>
@@ -38,18 +127,24 @@
       <a class="navbar-brand col" href="/quienes_somos"><h4>Quiénes Somos</h4></a>
       <a class="navbar-brand col" href="/galeria"><h4>Galería</h4></a>
     </nav>
-    </div>
+    </div>-->
 
-
+    <div class="container">
   
     {% block content %}
     {% endblock %}
   
   </div>
-
+  <br>
+  <br>
+  <br>
+  <br>
 <footer >
   <p>Proyecto de titulo analista programador computacional - DuocUc 2022 </p>
 </footer>
+<script src="{% static 'js/jquery/jquery-3.6.0.min.js' %}"></script>
+  <script src="{% static 'js/popper/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
 
 </body>
 </html>

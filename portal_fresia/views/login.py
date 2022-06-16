@@ -1,22 +1,23 @@
-from django.shortcuts import render
-from portal_fresia.models import Genero, Region
-from portal_fresia.models import Cliente
-from django.contrib.auth.models import User
-from django.contrib.auth.hashers import check_password
+from django.shortcuts import redirect, render
+from django.contrib.auth import login, authenticate
 
-def login(request):
-    if request.method=='POST':
 
-        user =request.POST.get('nombre')
-        pas =request.POST.get('contrasena')
+def authentication(request):
+    if request.method == 'POST':
+        try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(username=username, password=password)
+            login(request, user)            
+        except Exception as e:
+            print('Error: ', e)
+    return redirect('home/')
 
-        user = User.objects.get(username=user)
-        if check_password(pas,user.password):
-            print('login valido')
-
+def authorization(request, perm):
+    if request.user != None:
+        if request.user.has_perm(perm):
+            return True
         else:
-            print('login invalido')
-
-    return render(request, 'login.html')
-
-
+            return False
+    else:
+        return False

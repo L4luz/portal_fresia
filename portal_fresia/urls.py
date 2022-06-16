@@ -22,11 +22,13 @@ from portal_fresia.views.contactanos import contactanos
 from portal_fresia.views.galeria import galeria
 from portal_fresia.views.quienes_somos import quienes_somos
 from portal_fresia.views.productos import productos
-from portal_fresia.views.login import login
+from portal_fresia.views.login import authentication
 from portal_fresia.views.region_controller import index_region, add_region
 from portal_fresia.views.home import index
 from portal_fresia.views.pago import pago
+from portal_fresia.views.user import load
 from portal_fresia.views.cart import cart
+from portal_fresia.views.logout import logout_user
 from portal_fresia.views.crear_cuenta import crear_cuenta
 from portal_fresia.views.crear_cuenta import add_contact
 from portal_fresia.views.clientes import clientes
@@ -51,9 +53,11 @@ urlpatterns = [
     path('crear_cuenta/', crear_cuenta),
     path('add_contact/', add_contact),
     path('clientes/',clientes),
-    path('login/', login),
+    path('login', authentication),
     path('pago/', pago),
     path('cart/', cart),
+    path('edit-user/', load),
+     path('logout', logout_user),
     path('commit-pay/', commitpay),
     path('webpay-plus-create', webpay_plus_create),  
     path('accounts/',include('django.contrib.auth.urls')) 
