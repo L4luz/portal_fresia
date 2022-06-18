@@ -3,7 +3,10 @@
 	background-color: rgb(166, 204, 191);
 	color: #FFFFFF !important;
 }
-
+img{
+	width: 100%;
+	height: 100%;
+}
 .bg-dark {
 	background-color: rgb(166, 204, 191);
 	color: #FFFFFF !important;
@@ -114,4 +117,49 @@ footer p{
 	text-align: center;
     margin-top: 2rem;
     background-color: rgb(166, 204, 191);
+}
+
+.carousel-item img{
+	margin-top: 0.5rem;
+	height: 32rem;
+	width: 20rem;
+}
+
+.quienes_somos{
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    
+}
+.quienes_somos p{
+	text-align: center;
+} 
+
+
+
+.card .modal .carousel-inner .carousel-item {
+	margin-top: 0.5rem;
+	height: auto;
+	max-width: 100%;
+	align-items: center;
+	justify-content: center;
+	
+	
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    height: 100px;
+    width: 25px;
+    outline: black;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 100%, 100%;
+    border-radius: 50%;
+   
+}
+
+.card .modal .carousel-item img{
+	margin-top: 0.5rem;
+	height: auto;
+	max-width: 25rem;
 }

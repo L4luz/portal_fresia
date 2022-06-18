@@ -40,3 +40,4 @@ function isEmpty(element){
         return false;
     }
 }
+

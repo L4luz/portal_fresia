@@ -28,7 +28,7 @@ def add_contact(request):
     fecha_de_nac=request.POST.get('fecha-de-nac')
     id_genero=request.POST.get('id_genero')
     id_estado_civil=request.POST.get('id-estado-civil')
-    id_tarjeta_cliente=request.POST.get('id-tarjeta-cliente')
+    
 
     print('email', email)
     print('rut', rut)
@@ -37,7 +37,7 @@ def add_contact(request):
     print('fecha_de_nac', fecha_de_nac)
     print('id_genero', id_genero)
     print('id_estado_civil', id_estado_civil)
-    print('id_tarjeta_cliente', id_tarjeta_cliente)
+    
     cliente = Cliente()
     cliente.email = email
     cliente.rut = rut
@@ -46,10 +46,10 @@ def add_contact(request):
     cliente.fecha_de_nac = fecha_de_nac
     cliente.id_genero = Genero.objects.get(pk=id_genero)
     cliente.id_estado_civil = EstadoCivil.objects.get(pk=id_estado_civil)
-    cliente.id_tarjeta_cliente = TarjetaCliente.objects.get(pk=id_estado_civil)
+    
     
     user = User()
-    user.username = email
+    user.username = nombre
     user.set_password(contrasena)
 
     
