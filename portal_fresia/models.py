@@ -80,17 +80,33 @@ class AuthUserUserPermissions(models.Model):
         db_table = 'auth_user_user_permissions'
         unique_together = (('user', 'permission'),)
 
+class CarritoCompra(models.Model):
+    id_carrito_compra = models.BigAutoField(primary_key=True)
+    id_modelo = models.ForeignKey('Modelo', models.DO_NOTHING, db_column='id_modelo')
+    id_talla = models.ForeignKey('Talla', models.DO_NOTHING, db_column='id_talla')
+    id_color = models.ForeignKey('Color', models.DO_NOTHING, db_column='id_color')
+    id_tipo_producto = models.ForeignKey('TipoProducto', models.DO_NOTHING, db_column='id_tipo_producto')
+    id_material = models.ForeignKey('Material', models.DO_NOTHING, db_column='id_material')
+    id_cliente = models.ForeignKey('Cliente', models.DO_NOTHING, db_column='id_cliente')
 
+    class Meta:
+        managed = False
+        db_table = 'carrito_compra'
+
+    def __str__(self):
+        return str(self.id_carrito_compra)
+
+        
 class Cliente(models.Model):
     id_cliente = models.BigAutoField(primary_key=True)
-    email = models.CharField(max_length=200, blank=True, null=True)
+    email = models.CharField(max_length=200)
     rut = models.CharField(max_length=11)
     contrasena = models.CharField(max_length=200)
     nombre = models.CharField(max_length=200)
     fecha_de_nac = models.DateField()
     id_genero = models.ForeignKey('Genero', models.DO_NOTHING, db_column='id_genero')
     id_estado_civil = models.ForeignKey('EstadoCivil', models.DO_NOTHING, db_column='id_estado_civil')
-    id_tarjeta_cliente = models.ForeignKey('TarjetaCliente', models.DO_NOTHING, db_column='id_tarjeta_cliente')
+    id_tarjeta_cliente = models.ForeignKey('TarjetaCliente', models.DO_NOTHING, db_column='id_tarjeta_cliente', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -105,7 +121,8 @@ class Compra(models.Model):
     class Meta:
         managed = False
         db_table = 'compra'
-
+    def __str__(self):
+        return str(self.id_compra)
 
 class Comuna(models.Model):
     id_comuna = models.BigAutoField(primary_key=True)
@@ -260,11 +277,44 @@ class Material(models.Model):
     def __str__(self):
         return str(self.nombre)
 
+
+class Modelo(models.Model):
+    id_modelo = models.BigAutoField(primary_key=True)
+    valor = models.DecimalField(max_digits=65535, decimal_places=0)
+    nombre = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'modelo'
+    def __str__(self):
+        return str(self.nombre)
+
+class Talla(models.Model):
+    id_talla = models.BigAutoField(primary_key=True)
+    nombre = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'talla'
+    def __str__(self):
+        return str(self.nombre)
+
+class Color(models.Model):
+    id_color = models.BigAutoField(primary_key=True)
+    nombre = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'color'
+    def __str__(self):
+        return str(self.nombre)
+
+
 class Producto(models.Model):
     id_producto = models.BigAutoField(primary_key=True)
-    nombre = models.CharField(max_length=200)
-    talla = models.CharField(max_length=1)
-    color = models.CharField(max_length=30)
+    id_modelo = models.ForeignKey(Modelo, models.DO_NOTHING, db_column='id_modelo')
+    id_talla = models.ForeignKey(Talla, models.DO_NOTHING, db_column='id_talla')
+    id_color = models.ForeignKey(Color, models.DO_NOTHING, db_column='id_color')
     id_tipo_producto = models.ForeignKey('TipoProducto', models.DO_NOTHING, db_column='id_tipo_producto')
     id_material = models.ForeignKey(Material, models.DO_NOTHING, db_column='id_material')
 
@@ -272,7 +322,7 @@ class Producto(models.Model):
         managed = False
         db_table = 'producto'
     def __str__(self):
-        return str(self.nombre)
+        return str(self.id_producto)
 
 class ProductoCompra(models.Model):
     id_producto_compra = models.BigAutoField(primary_key=True)

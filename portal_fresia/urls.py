@@ -28,8 +28,10 @@ from portal_fresia.views.home import index
 from portal_fresia.views.pago import pago
 from portal_fresia.views.user import load
 from portal_fresia.views.cart import cart
+from portal_fresia.views.carrito_compra import carrito_compra
 from portal_fresia.views.logout import logout_user
 from portal_fresia.views.crear_cuenta import crear_cuenta
+from portal_fresia.views.productos import crear_productos,add_producto
 from portal_fresia.views.crear_cuenta import add_contact
 from portal_fresia.views.clientes import clientes
 from portal_fresia.views.transbankpay import commitpay,webpay_plus_create
@@ -49,7 +51,9 @@ urlpatterns = [
     path('contactanos/', contactanos),
     path('galeria/', galeria),
     path('quienes_somos/', quienes_somos),
-    path('productos/', productos),
+    path('productos/', crear_productos),
+    path('productos/', add_producto),
+    path('cart/', carrito_compra),
     path('crear_cuenta/', crear_cuenta),
     path('add_contact/', add_contact),
     path('clientes/',clientes),

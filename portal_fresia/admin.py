@@ -1,6 +1,6 @@
 from django.contrib import admin
 from portal_fresia.models import AreaTrabajo, Cliente,Compra,Comuna ,Direccion , DocumentoTributario,Envio , EstadoCivil,EstadoEnvio , Genero, Insumo,Invitado 
-from portal_fresia.models import Material,Producto , ProductoCompra,Region ,TarjetaCliente ,TipoDocumTribu ,TipoPago , TipoProducto,TipoTarjeta ,Trabajador 
+from portal_fresia.models import CarritoCompra,Compra,Material,Producto , ProductoCompra,Region ,TarjetaCliente ,TipoDocumTribu ,TipoPago , TipoProducto,TipoTarjeta ,Trabajador ,Modelo,Talla,Color
 
 class AreaTrabajoForm(admin.ModelAdmin):
     def _session_data(self, obj):
@@ -66,7 +66,7 @@ admin.site.register(Material,MaterialForm)
 class ProductoForm(admin.ModelAdmin):
     def _session_data(self, obj):
         return obj.get_decoded()
-    list_display = ['nombre']
+    list_display = ['id_producto']
 admin.site.register(Producto,ProductoForm)
 
 class RegionForm(admin.ModelAdmin):
@@ -112,10 +112,36 @@ class TrabajadorForm(admin.ModelAdmin):
 admin.site.register(Trabajador,TrabajadorForm)
 
 
+class ModeloForm(admin.ModelAdmin):
+    def _session_data(self, obj):
+        return obj.get_decoded()
+    list_display = ['nombre']
+admin.site.register(Modelo,ModeloForm)
+
+class TallaForm(admin.ModelAdmin):
+    def _session_data(self, obj):
+        return obj.get_decoded()
+    list_display = ['nombre']
+admin.site.register(Talla,TallaForm)
+
+class ColorForm(admin.ModelAdmin):
+    def _session_data(self, obj):
+        return obj.get_decoded()
+    list_display = ['nombre']
+admin.site.register(Color,ColorForm)
 
 
+class CompraForm(admin.ModelAdmin):
+    def _session_data(self, obj):
+        return obj.get_decoded()
+    list_display = ['id_compra']
+admin.site.register(Compra,CompraForm)
 
-
+class CarritoCompraForm(admin.ModelAdmin):
+    def _session_data(self, obj):
+        return obj.get_decoded()
+    list_display = ['id_carrito_compra']
+admin.site.register(CarritoCompra,CarritoCompraForm)
 
 
 
