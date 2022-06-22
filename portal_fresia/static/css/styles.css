@@ -31,7 +31,19 @@ footer {
     justify-content: center;
     align-items: center;
     max-width: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
+.form-row{
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
 .quienes_somos{
     margin-top: 2rem;
     justify-content: center;

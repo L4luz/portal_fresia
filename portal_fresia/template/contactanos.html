@@ -1,10 +1,10 @@
 {% extends "main-template.html" %}{% load static %}
 {% block title %}PORTAL FRESIA HECHO A MANO (HOME){% endblock %}
 {% block content %}
- <div class="row formulario">
+ <div class="formulario">
 <form id="frm-enviar-contacto" action="" method="POST"> {% csrf_token %}
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="text-center">
       <label for="txt-nombre">Nombre</label>
       <input type="nombre" name="nombre" class="form-control" id="txt-nombre" placeholder="Nombre">
     </div>
@@ -12,14 +12,14 @@
   </div>
   
   <div class="form-row">
-      <div class="form-group col-md-6">
+      <div class="text-center">
         <label for="txt-email">Email</label>
         <input type="email" name="mail" class="form-control" id="txt-email" placeholder="Email">
       </div>
       
     </div>
     <div class="form-row">
-      <div class="form-group col-md-6">
+      <div class="text-center">
         <label for="textarea">Comentarios:</label>
         <textarea name="comentarios"  class="form-control" id="txt-comentarios" placeholder="Danos tu opinion" rows="10" cols="80"></textarea>
       </div>
