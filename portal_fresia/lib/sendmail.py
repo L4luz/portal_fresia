@@ -16,7 +16,7 @@ print('BASE_DIR: {0}'.format(BASE_DIR))
 
 
 
-def build_and_send(toList, username, password, smtp_host, smtp_port):
+def build_and_send(toList, username, password, smtp_host, smtp_port, nombre):
     try:
         subject = "POC SEND SUCCESS MAIL"
         mail_body = ""
@@ -26,7 +26,7 @@ def build_and_send(toList, username, password, smtp_host, smtp_port):
         txt_file.close()
         #print("mail_body: {0}".format(mail_body))
         # Override template html
-        mail_body = mail_body.replace('#PERSON_NAME', 'John W.')
+        mail_body = mail_body.replace('#PERSON_NAME', nombre)
         array = ["element 1", "element 2", "element 3", "element 4"]
         list_a = ""
         for e in array:
