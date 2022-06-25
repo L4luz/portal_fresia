@@ -28,6 +28,8 @@ $('#btn_limpiar').click(function(e){
     $('#txt-nombre').val("");
     $('#txt-email').val("");
     $('#txt-comentarios').val("");
+    $('#txt-id-estado-civil').val("");
+    $('#txt-id-genero').val("");
 
 })
 

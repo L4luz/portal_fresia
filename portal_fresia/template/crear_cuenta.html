@@ -14,9 +14,12 @@
 <div class="row formulario"> 
     <div class="form-row">
         <div class="form-group col-md-6">
-                <label class="white-text" for="txt-email">Email :</label>
-                <input type="email" name="email" class="form-control" id="txt-email">
+            <div class="form-group">
+                <label class="white-text" for="txt-nombre">Nombre :</label>
+                <input type="text" name="nombre" class="form-control" id="txt-nombre">
+            </div>
         </div>
+
         <div class="form-group col-md-6">
             <div class="form-group col-md-6">
                 <label class="white-text" for="txt-rut">Rut :</label>
@@ -24,27 +27,26 @@
             </div>
         </div>
 
+        <div class="form-group col-md-6">
+                <label class="white-text" for="txt-email">Email :</label>
+                <input type="email" name="email" class="form-control" id="txt-email">
+        </div>
+
+
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <div class="form-group col-md-6">
                     <label class="white-text" for="txt-contrasena">Contraseña :</label>
-                    <input type="text" name="contrasena" class="form-control" id="txt-contrasena">
+                    <input type="password" name="contrasena" class="form-control" id="txt-contrasena">
                 </div>
             </div>
-        <div class="form-group col-md-6">
-            <div class="form-group">
-                <label class="white-text" for="txt-nombre">Nombre :</label>
-                <input type="text" name="nombre" class="form-control" id="txt-nombre">
-            </div>
-        </div>
-
     </div>  
     <div class="form-row">
         <div class="form-group col-md-6">
             <div class="form-group">
                 <label class="white-text" for="txt-fecha-de-nac"> Fecha Nacimiento</label>
-                <input type="text" name="fecha-de-nac" class="form-control"  id="txt-fecha-de-nac" placeholder="1999-01-01">
+                <input type="text" name="fecha-de-nac" class="form-control"  id="txt-fecha-de-nac" placeholder="01-01-1920">
             </div>
         </div>
         <div class="form-group col-md-6">
@@ -75,20 +77,12 @@
         </select>  
     </div>
     </div>
-    <div class="form-group">
-        <label class="white-text" for="txt-id-tarjeta-cliente">Tarjeta Cliente  ID:</label>
-        <select name="id-tarjeta-cliente" id="txt-id-tarjeta-cliente" class="form-select" aria-label="Seleccionar Tarjeta de Cliente">
-            {% if tarjetas_clientes %}
-            {% for tarjetaCliente in tarjetas_clientes %}
-            <option value="{{tarjetaCliente.id_tarjeta_cliente}}">{{tarjetaCliente.nombre}}</option>
-            {% endfor %}
-            {% endif %}
-        </select>  
-    </div>
+
 
     </div>
     <div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
-        <button type="submit" class="btn btn-md btn-outline-info">Guardar</button>
+        <button type="submit" class="btn btn-md btn-outline-success">Crear</button>
+        <button type="button" class="btn btn-md btn-outline-success" id="btn_limpiar">Limpiar</button>
     </div>
 
 </form>
