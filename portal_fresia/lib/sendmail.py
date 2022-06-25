@@ -15,31 +15,39 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 print('BASE_DIR: {0}'.format(BASE_DIR))
 
 
-def build_and_send(to_list, user_mail, password_mail, smtp_host_mail, smtp_port_mail, subject, body_mail):
+
+def build_and_send(toList, username, password, smtp_host, smtp_port):
     try:
+        subject = "POC SEND SUCCESS MAIL"
+        mail_body = ""
+        # Read template html
+        txt_file = open(os.path.join(BASE_DIR, 'sources', 'template', 'mail', 'success-mail.html'))
+        mail_body = txt_file.read()
+        txt_file.close()
+        #print("mail_body: {0}".format(mail_body))
+        # Override template html
+        mail_body = mail_body.replace('#PERSON_NAME', 'John W.')
+        array = ["element 1", "element 2", "element 3", "element 4"]
+        list_a = ""
+        for e in array:
+            data = "<tr><td>{0}</td></tr>".format(e)
+            list_a = list_a + data
+        mail_body = mail_body.replace('#LIST', list_a)
+        #print("mail_body: {0}".format(mail_body))
         #Set mail paremeters
         mimemsg = MIMEMultipart()
-        mimemsg['From'] = user_mail
-        mimemsg['To'] = to_list
+        mimemsg['From'] = username
+        mimemsg['To'] = toList
         mimemsg['Subject'] = subject
-        mimemsg.attach(MIMEText(body_mail, 'html'))
-        connection = smtplib.SMTP(host=smtp_host_mail, port=smtp_port_mail)
+        mimemsg.attach(MIMEText(mail_body, 'html'))
+        connection = smtplib.SMTP(host=smtp_host, port=smtp_port)
         connection.starttls()
-        connection.login(user_mail,password_mail)
-        #Load img
-        base_dir = Path(__file__).resolve().parent.parent
-        img_path = os.path.join(base_dir, 'static', 'img', 'icon', 'shopping-bag.png')
-        print('img_path: ', img_path)
-        with open(img_path, 'rb') as f:
-            img_data = f.read()
-        image = MIMEImage(img_data, 'jpeg')
-        image.add_header('Content-Id', '<shoppingbag>')
-        mimemsg.attach(image)
+        connection.login(username,password)
         #Send mail
         connection.send_message(mimemsg)
         connection.quit()
     except Exception as e:
-        print(e)
+        print(e)        
 
 def load_email_sender():
     # Initialise environment variables
