@@ -2,7 +2,7 @@
 {% block title %}PORTAL FRESIA HECHO A MANO (HOME){% endblock %}
 {% block content %}
  <div class="formulario-contactanos">
-<form id="frm-enviar-contacto" action="" method="POST"> {% csrf_token %}
+  <form id="frm-enviar-contacto" action="" method="POST"> {% csrf_token %}
   <div class="form-row">
     <div class="text-center">
       <label for="txt-nombre">Nombre</label>
@@ -26,7 +26,11 @@
 
     </div>
     <div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
-    <button type="submit" class="btn btn-md btn-outline-info">Enviar</button>
+      <button type="submit" class="btn btn-md btn-outline-success" id="btn_enviar">Enviar</button>
+      
+      <button type="button" class="btn btn-md btn-outline-success" id="btn_limpiar">Limpiar</button>
+      <br><br>
+      <ul id="messagesEnviar" class="text-danger"></ul> 
   </div>
   </form>
 </div>
