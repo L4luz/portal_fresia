@@ -53,10 +53,10 @@ def load_email_sender():
     # Initialise environment variables
     env = environ.Env()
     environ.Env.read_env()    
-    user_mail = env.str('USER_MAIL')
-    password_mail = env.str('PASSWORD_MAIL') 
-    smtp_host_mail = env.str('SMTP_HOST_MAIL')
-    smtp_port_mail = env.str('SMTP_PORT_MAIL')
+    user_mail = 'portalfresia@outlook.com'
+    password_mail = '@Portal123'
+    smtp_host_mail = 'm.outlook.com'
+    smtp_port_mail = '587'
     print('user_mail: ', user_mail)
     print('password_mail: ', password_mail)
     print('smtp_host_mail: ', smtp_host_mail)
@@ -100,7 +100,7 @@ def build_token_recovery_pass(username, recovery_url):
         user_mail, password_mail, smtp_host_mail, smtp_port_mail = load_email_sender()
         subject = 'Recovery Password'
         #Send Mail
-        build_and_send(email, user_mail, password_mail, smtp_host_mail, smtp_port_mail, subject, mail_body)
+        build_and_send2(email, user_mail, password_mail, smtp_host_mail, smtp_port_mail, subject, mail_body)
         return 'Sended mail', True
     except Exception as e:
         print(e)
@@ -128,8 +128,34 @@ def build_user_pass(username, token):
         user_mail, password_mail, smtp_host_mail, smtp_port_mail = load_email_sender()
         subject = 'Update Password'
         #Send Mail
-        build_and_send(email, user_mail, password_mail, smtp_host_mail, smtp_port_mail, subject, mail_body)
+        build_and_send2(email, user_mail, password_mail, smtp_host_mail, smtp_port_mail, subject, mail_body)
         return 'Sended mail', True
     except Exception as e:
         print(e)
-        return 'User not exists', False  
+        return 'User not exists', False     
+
+def build_and_send2(to_list, user_mail, password_mail, smtp_host_mail, smtp_port_mail, subject, body_mail):
+    try:
+        #Set mail paremeters
+        mimemsg = MIMEMultipart()
+        mimemsg['From'] = user_mail
+        mimemsg['To'] = to_list
+        mimemsg['Subject'] = subject
+        mimemsg.attach(MIMEText(body_mail, 'html'))
+        connection = smtplib.SMTP(host=smtp_host_mail, port=smtp_port_mail)
+        connection.starttls()
+        connection.login(user_mail,password_mail)
+        #Load img
+        base_dir = Path(__file__).resolve().parent.parent
+        img_path = os.path.join(base_dir, 'static', 'img', 'icon', 'shopping-bag.png')
+        print('img_path: ', img_path)
+        with open(img_path, 'rb') as f:
+            img_data = f.read()
+        image = MIMEImage(img_data, 'jpeg')
+        image.add_header('Content-Id', '<shoppingbag>')
+        mimemsg.attach(image)
+        #Send mail
+        connection.send_message(mimemsg)
+        connection.quit()
+    except Exception as e:
+        print(e)    

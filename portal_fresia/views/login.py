@@ -1,6 +1,5 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate
-from portal_fresia.lib.autogenerate import generate
 
 
 def authentication(request):
@@ -9,6 +8,7 @@ def authentication(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(username=username, password=password)
+            print('user',user)
             login(request, user)            
         except Exception as e:
             print('Error: ', e)
@@ -22,10 +22,3 @@ def authorization(request, perm):
             return False
     else:
         return False
-
-def send_mail_recovery_pass(username):
-    return None
-
-def recovery_pass(request):
-    print('new key', generate(32))
-    return None    

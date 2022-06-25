@@ -59,16 +59,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <div class="icon">
-            <img src="{% static 'img/icon/settings.png' %}" alt="">
-          </div>
-          <div class="offcanvas-menu">
-            {% if perms.country.view_country %}
-            <ul class="option" aria-labelledby="dropdown-menu-button">
-              <li class=""><a class="" href="/country">Country</a></li>
-            </ul>
-            {% endif %}
-          </div>
+         <h1>Historial Compra</h1>
           
         </div>
       </div>
@@ -82,7 +73,7 @@
         {% if user.is_authenticated %}  
         <div class="offcanvas-body">
           <div class="icon">
-            <img src="{% static 'img/icon/man.png' %}" alt="">         
+            <img src="{% static 'img/icon/iniciar-sesion (1).png' %}" alt="">         
           </div>
           <div class="user-data-login">
             <p>{{ user.email }}</p>
@@ -92,7 +83,7 @@
           </div>
           <div class="offcanvas-login">
             <ul class="option" aria-labelledby="dropdown-login-button">
-              <li class=""><a class="" href="/edit-user">EDIT</a></li>
+              <li class=""><a class="" method="" href="/edit-user">EDIT</a></li>
             </ul>
             <form method="POST" action="/logout">{% csrf_token %}
                 <button class="btn btn-outline-primary ms-2 bi bi-door-open" type="submit"></button>                        

@@ -1,6 +1,5 @@
 
 
-
 from django import apps
 from django.shortcuts import render
 

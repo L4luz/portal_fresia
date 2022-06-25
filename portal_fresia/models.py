@@ -80,6 +80,15 @@ class AuthUserUserPermissions(models.Model):
         db_table = 'auth_user_user_permissions'
         unique_together = (('user', 'permission'),)
 
+class AuthtokenToken(models.Model):
+    key = models.CharField(primary_key=True, max_length=40)
+    created = models.DateTimeField()
+    user = models.OneToOneField(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'authtoken_token'
+
 class CarritoCompra(models.Model):
     id_carrito_compra = models.BigAutoField(primary_key=True)
     id_modelo = models.ForeignKey('Modelo', models.DO_NOTHING, db_column='id_modelo')

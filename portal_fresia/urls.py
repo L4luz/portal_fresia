@@ -28,10 +28,11 @@ from portal_fresia.views.login import authentication
 from portal_fresia.views.region_controller import index_region, add_region
 from portal_fresia.views.home import index
 from portal_fresia.views.pago import pago
-from portal_fresia.views.user import load
+from portal_fresia.views import user
 from portal_fresia.views.cart import cart
-from portal_fresia.views.verification_recovery import load
-from portal_fresia.views.recovery import load
+from portal_fresia.views import  model_register
+from portal_fresia.views import verification_recovery
+from portal_fresia.views import recovery
 from portal_fresia.views.carrito_compra import carrito_compra
 from portal_fresia.views.logout import logout_user
 from portal_fresia.views.crear_cuenta import crear_cuenta
@@ -39,7 +40,7 @@ from portal_fresia.views.productos import crear_productos,add_producto
 from portal_fresia.views.crear_cuenta import add_contact
 from portal_fresia.views.clientes import clientes
 from portal_fresia.views.transbankpay import commitpay,webpay_plus_create
-from portal_fresia.views.user_controller import user, user_by_id
+from portal_fresia.views import user_controller 
 from portal_fresia.ws.cliens_ws import find_client_all,add_client
 from portal_fresia.views.transbankpay import webpay_plus_create
 
@@ -50,7 +51,7 @@ urlpatterns = [
     path('home/', index),
     path('api/v1/clients', find_client_all),
      path('api/v1/add-clients', add_client),
-    path('api/v1/user/<int:id>', user_by_id),
+    path('api/v1/user/<int:id>', user_controller.user_by_id),
     path('', index),
     path('region/', index_region),
     path('add-region', add_region),
@@ -66,9 +67,9 @@ urlpatterns = [
     path('login', authentication),
     path('pago/', pago),
     path('cart/', cart),
-    path('verification-recovery/', load),
-    path('recovery/', load),
-    path('edit-user/', load),
+    path('verification-recovery/', verification_recovery.load),
+    path('recovery/', recovery.load),
+    path('edit-user/', user.load),
     path('logout', logout_user),
     path('commit-pay/', commitpay),
     path('webpay-plus-create', webpay_plus_create),  

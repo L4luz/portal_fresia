@@ -15,7 +15,7 @@
   {% for productos in productos %}
 
 <div class="card col-5" style="width: 18rem;">
-  <img class="card-img-top" src={{productos.imagen}} alt="Card image cap">
+  <img class="card-img-top" src="{% static productos.imagen %}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{productos.id_modelo}}</h5>
     <h5 class="card-title">${{productos.id_modelo.valor}}</h5>
