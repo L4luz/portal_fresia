@@ -122,7 +122,7 @@ footer p{
 .carousel-item img{
 	margin-top: 0.5rem;
 	height: 32rem;
-	width: 20rem;
+	width: 15rem;
 }
 
 .quienes_somos{
@@ -141,7 +141,7 @@ footer p{
 .card .modal .carousel-inner .carousel-item {
 	margin-top: 0.5rem;
 	height: auto;
-	max-width: 100%;
+	max-width: 80%;
 	align-items: center;
 	justify-content: center;
 	
@@ -162,4 +162,10 @@ footer p{
 	margin-top: 0.5rem;
 	height: 20rem;
 	max-width: 25rem;
+}
+
+.formulario-contactanos{
+	max-width: 50%;
+	margin-left: 300px;
+	margin-top: 30px;
 }
