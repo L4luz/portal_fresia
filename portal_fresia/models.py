@@ -312,8 +312,9 @@ class Color(models.Model):
 
 class Producto(models.Model):
     id_producto = models.BigAutoField(primary_key=True)
+    imagen = models.CharField(max_length=100)
     id_modelo = models.ForeignKey(Modelo, models.DO_NOTHING, db_column='id_modelo')
-    id_talla = models.ForeignKey(Talla, models.DO_NOTHING, db_column='id_talla')
+    id_talla = models.ForeignKey('Talla', models.DO_NOTHING, db_column='id_talla')
     id_color = models.ForeignKey(Color, models.DO_NOTHING, db_column='id_color')
     id_tipo_producto = models.ForeignKey('TipoProducto', models.DO_NOTHING, db_column='id_tipo_producto')
     id_material = models.ForeignKey(Material, models.DO_NOTHING, db_column='id_material')

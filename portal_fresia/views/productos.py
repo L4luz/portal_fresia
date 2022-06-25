@@ -49,21 +49,15 @@ def add_producto(request):
     carrito.id_tipo_producto = TipoProducto.objects.get(pk=id_tipo_producto)
     carrito.id_material = Material.objects.get(pk=id_material)
     carrito.id_cliente = Cliente.objects.get(pk=id_cliente)
-    
-    producto = Producto()
-    producto.id_modelo = Modelo.objects.get(pk=id_modelo)
-    producto.id_talla = Talla.objects.get(pk=id_talla)
-    producto.id_color = Color.objects.get(pk=id_color)
-    producto.id_tipo_producto = TipoProducto.objects.get(pk=id_tipo_producto)
-    producto.id_material = Material.objects.get(pk=id_material)
+   
 
     
-    compra = Compra()
+    
 
-    print('id_producto', producto.id_producto )
+    print('id_producto', carrito.id_carrito_compra )
 
     try:
-        producto.save()
+        
         carrito.save()
         #compra.save()
         
