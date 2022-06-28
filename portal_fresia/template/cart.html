@@ -14,6 +14,7 @@
         <th scope="col">COLOR</th>
         <th scope="col">PRODUCT TYPE</th>
         <th scope="col">MATERIAL</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -31,6 +32,10 @@
         <td>{{product.id_color}}</td>
         <td>{{product.id_tipo_producto}}</td>
         <td>{{product.id_material}}</td>
+        <td><form action="" method="GET">
+          <input name="codigo" value="{{product.id_carrito_compra}}" type="hidden"  id="">
+          <button type="submit" class="btn btn-danger">X</button>
+        </form></td>
         {% endfor %}        
       </tr>
       <form id='frm-pay' name="pay" action="/webpay-plus-create" method="POST">{% csrf_token %}

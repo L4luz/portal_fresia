@@ -41,10 +41,11 @@
           <a class="navbar-brand col" href="/contactanos"><h4>Contáctanos</h4></a>
           <a class="navbar-brand col" href="/productos"><h4>Productos</h4></a>
           <a class="navbar-brand col" href="/quienes_somos"><h4>Quiénes Somos</h4></a>
-          <a class="navbar-brand col" href="/galeria"><h4>Galería</h4></a>
+          
       
-      
+          {% if user.is_authenticated %}
       <a href="/cart"><img style="width: 30px; margin-right: 30px;" src="{% static 'img/icon/CARRITO.png' %}" alt=""></a>
+      {% endif %}
           <!--LOGIN BUTTON -->
           <button class="btn btn-outline-success ml-auto bi bi-person-circle" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvas-right" aria-controls="offcanvasRight"></button>

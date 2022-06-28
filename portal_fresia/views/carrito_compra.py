@@ -8,6 +8,14 @@ def carrito_compra(request):
     total = 0
 
     if request.user != None:
+        if request.method == 'GET':
+            codigo = request.GET.get('codigo')
+            if codigo is not None:
+                try:
+                    elemento =  CarritoCompra.objects.get(id_carrito_compra = codigo)
+                    elemento.delete()
+                except Exception as e: 
+                    print(e)
         queryset = CarritoCompra.objects.filter(id_cliente=request.user.id)
         carritoCompra =queryset.all()
         id_cliente=request.POST.get('id-user')
