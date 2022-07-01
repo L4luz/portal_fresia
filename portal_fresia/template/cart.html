@@ -8,11 +8,12 @@
     <caption>Products in the cart</caption>
     <thead>
       <tr>
-        <th scope="col">PRODUCT</th>
-        <th scope="col">QUANTY</th>
-        <th scope="col">PRICE</th>
+        <th scope="col">PRODUCTO</th>
+        <th scope="col">CANTIDAD</th>
+        <th scope="col">MODELO</th>
+        <th scope="col">VALOR</th>
         <th scope="col">COLOR</th>
-        <th scope="col">PRODUCT TYPE</th>
+        <th scope="col">TIPO </th>
         <th scope="col">MATERIAL</th>
         <th scope="col"></th>
       </tr>
@@ -28,7 +29,8 @@
                 </figure>                      
         </td>
         <td>1</td>
-        <td>{{product.id_modelo.valor}}</td>
+        <td>{{product.modelo}}</td>
+        <td>{{product.valor}}</td>
         <td>{{product.id_color}}</td>
         <td>{{product.id_tipo_producto}}</td>
         <td>{{product.id_material}}</td>
@@ -39,13 +41,14 @@
         {% endfor %}        
       </tr>
       <form id='frm-pay' name="pay" action="/webpay-plus-create" method="POST">{% csrf_token %}
-      <tr>
-        <td></td>
-        <td><strong>Total</strong></td>
-        <td><strong>{{total}}</strong><input id='txt-total' name="total" hidden value="{{total}}" /></td>
-        <td><button class="alert alert-primary">PAY</button></td>       
-      </tr>
-    </form>            
+        <tr>
+          <td></td>
+          <td><strong>Total</strong></td>
+          <td><strong>{{total}}</strong><input id='txt-total' name="total" hidden value="{{total}}" /></td>
+          <input type="hidden" name="user_id"  id="txt-buy_order" value="{{user_id}}">
+          <td><button  value=""  class="alert alert-primary" >Pagar</button></td>       
+        </tr>
+      </form>             
     </tbody>
   </table>
 

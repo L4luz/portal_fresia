@@ -91,19 +91,20 @@ class AuthtokenToken(models.Model):
 
 class CarritoCompra(models.Model):
     id_carrito_compra = models.BigAutoField(primary_key=True)
-    id_modelo = models.ForeignKey('Modelo', models.DO_NOTHING, db_column='id_modelo')
     id_talla = models.ForeignKey('Talla', models.DO_NOTHING, db_column='id_talla')
     id_color = models.ForeignKey('Color', models.DO_NOTHING, db_column='id_color')
     id_tipo_producto = models.ForeignKey('TipoProducto', models.DO_NOTHING, db_column='id_tipo_producto')
     id_material = models.ForeignKey('Material', models.DO_NOTHING, db_column='id_material')
     id_cliente = models.ForeignKey('Cliente', models.DO_NOTHING, db_column='id_cliente')
+    valor = models.DecimalField(max_digits=10, decimal_places=0)
+    modelo = models.CharField(max_length=200)
 
     class Meta:
         managed = False
         db_table = 'carrito_compra'
 
     def __str__(self):
-        return str(self.id_carrito_compra)
+        return str(self.modelo)
 
         
 class Cliente(models.Model):

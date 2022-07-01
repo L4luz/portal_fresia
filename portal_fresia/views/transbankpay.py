@@ -13,10 +13,12 @@ from transbank.common.integration_api_keys import IntegrationApiKeys
 
 import random
 
+from portal_fresia.models import CarritoCompra
+
 def webpay_plus_create(request):
     print("Webpay Plus Transaction.create")
     buy_order = str(random.randrange(1000000, 99999999))
-    session_id = str(random.randrange(1000000, 99999999))
+    session_id = request.POST.get('user_id')
     amount = request.POST.get('total')
 
     return_url = request.build_absolute_uri(location='commit-pay/')
@@ -49,13 +51,19 @@ def commitpay(request):
         response = tx.commit(token=token)
         print("response: {}".format(response)) 
 
+        session_id = response.get('session_id')
+        
+
         status = response.get('status')
         print("status: {0}".format(status))
         response_code = response.get('response_code')
         print("response_code: {0}".format(response_code)) 
         #TRANSACCIÓN APROBADA
         if status == 'AUTHORIZED' and response_code == 0:
-
+            queryset = CarritoCompra.objects.filter(id_cliente=request.user.id)
+            carritoCompra2 =queryset.all()
+            for item in carritoCompra2:
+                item.delete()
             state = ''
             if response.get('status') == 'AUTHORIZED':
                 state = 'Aceptado'

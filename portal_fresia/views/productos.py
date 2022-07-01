@@ -13,7 +13,6 @@ def crear_productos(request):
     if request.method == 'POST':
         estado, mensaje = add_producto(request)
     productos = Producto.objects.all()
-    modelos = Modelo.objects.all()
     tallas = Talla.objects.all()
     colores = Color.objects.all()
     tipo_productos = TipoProducto.objects.all()
@@ -21,12 +20,13 @@ def crear_productos(request):
   
   
 
-    return render(request, 'productos.html',  {'productos':productos,'modelos': modelos,'tallas': tallas,'colores': colores,'tipo_productos': tipo_productos, 'materiales':materiales,'estado': estado, 'mensaje' : mensaje})
+    return render(request, 'productos.html',  {'productos':productos,'tallas': tallas,'colores': colores,'tipo_productos': tipo_productos, 'materiales':materiales,'estado': estado, 'mensaje' : mensaje})
 
 
 
 def add_producto(request):
-    id_modelo=request.POST.get('id-modelo')
+    modelo=request.POST.get('modelo')
+    valor=request.POST.get('valor')
     id_talla=request.POST.get('id-talla')
     id_color=request.POST.get('id-color')
     id_tipo_producto=request.POST.get('id-tipo-producto')
@@ -35,7 +35,8 @@ def add_producto(request):
  
     
 
-    print('id_modelo', id_modelo)
+    print('modelo :', modelo)
+    print('valor : ', valor)
     print('id_talla', id_talla)
     print('id_color', id_color)
     print('id_tipo_producto', id_tipo_producto)
@@ -43,7 +44,8 @@ def add_producto(request):
     print('userID', id_cliente)
   
     carrito = CarritoCompra()
-    carrito.id_modelo = Modelo.objects.get(pk=id_modelo)
+    carrito.modelo = modelo
+    carrito.valor = valor
     carrito.id_talla = Talla.objects.get(pk=id_talla)
     carrito.id_color = Color.objects.get(pk=id_color)
     carrito.id_tipo_producto = TipoProducto.objects.get(pk=id_tipo_producto)

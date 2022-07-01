@@ -20,207 +20,101 @@
     <h5 class="card-title">{{productos.id_modelo}}</h5>
     <h5 class="card-title">${{productos.id_modelo.valor}}</h5>
     <p class="card-text">{{productos.id_talla}}</p>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+    
+     <!-- Button trigger modal -->
+     <button data-bs-toggle="modal" 
+     data-bs-target="#mdl-{{productos.id_producto}}" type="button" class="btn btn-primary" >Ver Mas</button>
+ 
+ <!-- Modal -->
+ <div id="mdl-{{productos.id_producto}}" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Producto</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <img class="card-img-top" src="{% static productos.imagen %}" alt="Card image cap">
+         <div class="row">
+          <form method="POST" action=".">{% csrf_token %}
+            <select style="display: none;" name="id-user" id="id-user" class="form-select" aria-label="id-user">
+              <option value="{{user.id}}">{{user.id}}</option>
+            </select>
+            <div class="form-row">
+              <div class="col-6">
 
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+                
+             
+                <input name="modelo" id="modelo" style="display:none ;" value="{{productos.id_modelo}}">Modelo : {{productos.id_modelo}}</input>
+                <br>
+                <input name="valor" id="valor"  style="display:none ;" value="{{productos.id_modelo.valor}}">Valor : {{productos.id_modelo.valor}}</input>
               
-                <div id="carousel-captions" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-indicators">
-                          <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="0" class="active"
-                              aria-current="true" aria-label="Slide 1"></button>
-                          <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="1"
-                              aria-label="Slide 2"></button>
-                          <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="2"
-                              aria-label="Slide 3"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="3"
-                              aria-label="Slide 4"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="4"
-                              aria-label="Slide 5"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="5"
-                              aria-label="Slide 6"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="6"
-                              aria-label="Slide 7"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="7"
-                              aria-label="Slide 8"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="8"
-                              aria-label="Slide 9"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="9"
-                              aria-label="Slide 10"></button>
-                            
-                    
-                      </div>
-                      <div class="carousel-inner">
-                          <div class="carousel-item active">
-                              <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} "  class="d-block w-100"
-                                  alt="...">
-                              <div class="carousel-caption d-none d-md-block">
-                                  <h5></h5>
-                                  <p></p>
-                              </div>
-                          </div>
-                          <div class="carousel-item">
-                            <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (15).jpeg' %} " class="d-block w-100"
-                                  alt="...">
-                              <div class="carousel-caption d-none d-md-block">
-                                  <h5></h5>
-                                  <p></p>
-                              </div>
-                          </div>
-                      
-                          <div class="carousel-item">
-                            <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (14).jpeg' %} " class="d-block w-100"
-                                alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5></h5>
-                                <p></p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                          <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (13).jpeg' %} " class="d-block w-100"
-                              alt="...">
-                          <div class="carousel-caption d-none d-md-block">
-                              <h5></h5>
-                              <p></p>
-                          </div>
-                      </div>
-                      <div class="carousel-item">
-                        <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (12).jpeg' %} " class="d-block w-100"
-                            alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5></h5>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (8).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    
-                      </div>
-                      <button class="carousel-control-prev text-secondary" type="button" data-bs-target="#carousel-captions" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon text-secondary" aria-hidden="true"></span>
-                          <span class="visually-hidden text-secondary">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#carousel-captions" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                      </button>
-                  </div>
-                  <div class="row">
-                    <form method="POST" action=".">{% csrf_token %}
-                      <select style="display: none;" name="id-user" id="id-user" class="form-select" aria-label="id-user">
-                        <option value="{{user.id}}">{{user.id}}</option>
-                      </select>
-                      <div class="form-row">
-                        <div class="col-6">
-                          <label class="white-text" for="txt-id-talla">Modelo  :</label>
-                          <select name="id-modelo" id="txt-id-modelo" class="form-select" aria-label="Seleccionar Modelo">
-                              {% if modelos %}
-                              {% for modelo in modelos %}
-                              <option value="{{modelo.id_modelo}}">{{modelo.nombre}}</option>
-                              {% endfor %}
-                              {% endif %}
-                          </select>  
-                      </div>
-                    <div class="form-group">
-                      <div class="col-6">
-                        <label class="white-text" for="txt-id-talla">Talla  :</label>
-                        <select name="id-talla" id="txt-id-talla" class="form-select" aria-label="Seleccionar Talla">
-                            {% if tallas %}
-                            {% for talla in tallas %}
-                            <option value="{{talla.id_talla}}">{{talla.nombre}}</option>
-                            {% endfor %}
-                            {% endif %}
-                        </select>  
-                    </div>
-                  </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="col-6">
-                      <div class="form-group">
-                      <label class="white-text" for="txt-id-color">Color  :</label>
-                      <select name="id-color" id="txt-id-color" class="form-select" aria-label="Seleccionar Color">
-                        {% if colores %}
-                        {% for color in colores %}
-                        <option value="{{color.id_color}}">{{color.nombre}}</option>
-                        {% endfor %}
-                        {% endif %}
-                      </select>  
-                  </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-6">
-                      <label class="white-text" for="txt-id-tipo_producto">Tipo de Producto  :</label>
-                      <select name="id-tipo-producto" id="txt-id-tipo-producto" class="form-select" aria-label="Seleccionar Tipos de Productos">
-                          {% if tipo_productos %}
-                          {% for tipo_producto in tipo_productos %}
-                          <option value="{{tipo_producto.id_tipo_producto}}">{{tipo_producto.nombre}}</option>
-                          {% endfor %}
-                          {% endif %}
-                      </select>  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-6">
-                    <label class="white-text" for="txt-id-material">Material  :</label>
-                    <select name="id-material" id="txt-id-material" class="form-select" aria-label="Seleccionar Material">
-                        {% if materiales %}
-                        {% for material in materiales %}
-                        <option value="{{material.id_material}}">{{material.nombre}}</option>
-                        {% endfor %}
-                        {% endif %}
-                    </select>  
-                </div>
-              </div>
-                  </div>
-                  <div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
-                    <button type="submit" class="btn btn-md btn-outline-info">Guardar</button>
-                </div>
-
-                    </form>
-                </div>
-              </div>
             </div>
+          <div class="form-group">
+            <div class="col-6">
+              <label class="white-text" for="txt-id-talla">Talla  :</label>
+              <select name="id-talla" id="txt-id-talla" class="form-select" aria-label="Seleccionar Talla">
+                  {% if tallas %}
+                  {% for talla in tallas %}
+                  <option value="{{talla.id_talla}}">{{talla.nombre}}</option>
+                  {% endfor %}
+                  {% endif %}
+              </select>  
           </div>
+        </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-6">
+            <div class="form-group">
+            <label class="white-text" for="txt-id-color">Color  :</label>
+            <select name="id-color" id="txt-id-color" class="form-select" aria-label="Seleccionar Color">
+              {% if colores %}
+              {% for color in colores %}
+              <option value="{{color.id_color}}">{{color.nombre}}</option>
+              {% endfor %}
+              {% endif %}
+            </select>  
+        </div>
+        </div>
+        <div class="form-group">
+          <div class="col-6">
+            <label class="white-text" for="txt-id-tipo_producto">Tipo de Producto  :</label>
+            <select name="id-tipo-producto" id="txt-id-tipo-producto" class="form-select" aria-label="Seleccionar Tipos de Productos">
+                {% if tipo_productos %}
+                {% for tipo_producto in tipo_productos %}
+                <option value="{{tipo_producto.id_tipo_producto}}">{{tipo_producto.nombre}}</option>
+                {% endfor %}
+                {% endif %}
+            </select>  
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-6">
+          <label class="white-text" for="txt-id-material">Material  :</label>
+          <select name="id-material" id="txt-id-material" class="form-select" aria-label="Seleccionar Material">
+              {% if materiales %}
+              {% for material in materiales %}
+              <option value="{{material.id_material}}">{{material.nombre}}</option>
+              {% endfor %}
+              {% endif %}
+          </select>  
+      </div>
+    </div>
+        </div>
+        <div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
+          <button type="submit" class="btn btn-md btn-outline-info">Añadir al Carrito</button>
+      </div>
+
+          </form>
+      </div>
+       </div>
+       
+     </div>
+   </div>
+ </div>
 
     
   </div>
@@ -236,322 +130,6 @@
 
 
     
-  <!--
-    <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (6).jpeg' %}" alt="Card image cap">
-      <div class="card-body">
-          <h5 class="card-title">VERBENA</h5>
-          <p class="card-text">S / M / L</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              
-                <div id="carousel-captions" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-indicators">
-                          <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="0" class="active"
-                              aria-current="true" aria-label="Slide 1"></button>
-                          <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="1"
-                              aria-label="Slide 2"></button>
-                          <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="2"
-                              aria-label="Slide 3"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="3"
-                              aria-label="Slide 4"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="4"
-                              aria-label="Slide 5"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="5"
-                              aria-label="Slide 6"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="6"
-                              aria-label="Slide 7"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="7"
-                              aria-label="Slide 8"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="8"
-                              aria-label="Slide 9"></button>
-                              <button type="button" data-bs-target="#carousel-captions" data-bs-slide-to="9"
-                              aria-label="Slide 10"></button>
-                            
-                    
-                      </div>
-                      <div class="carousel-inner">
-                          <div class="carousel-item active">
-                              <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} "  class="d-block w-100"
-                                  alt="...">
-                              <div class="carousel-caption d-none d-md-block">
-                                  <h5></h5>
-                                  <p></p>
-                              </div>
-                          </div>
-                          <div class="carousel-item">
-                            <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (15).jpeg' %} " class="d-block w-100"
-                                  alt="...">
-                              <div class="carousel-caption d-none d-md-block">
-                                  <h5></h5>
-                                  <p></p>
-                              </div>
-                          </div>
-                      
-                          <div class="carousel-item">
-                            <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (14).jpeg' %} " class="d-block w-100"
-                                alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5></h5>
-                                <p></p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                          <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (13).jpeg' %} " class="d-block w-100"
-                              alt="...">
-                          <div class="carousel-caption d-none d-md-block">
-                              <h5></h5>
-                              <p></p>
-                          </div>
-                      </div>
-                      <div class="carousel-item">
-                        <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (12).jpeg' %} " class="d-block w-100"
-                            alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5></h5>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (8).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'img/MODELOS/Modelo 1 VERBENA/VERBENA (16).jpeg' %} " class="d-block w-100"
-                          alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5></h5>
-                          <p></p>
-                      </div>
-                    </div>
-                    
-                      </div>
-                      <button class="carousel-control-prev text-secondary" type="button" data-bs-target="#carousel-captions" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon text-secondary" aria-hidden="true"></span>
-                          <span class="visually-hidden text-secondary">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#carousel-captions" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                      </button>
-                  </div>
-                  <div class="row">
-                    <form method="POST" action=".">{% csrf_token %}
-                      <select style="display: none;" name="id-user" id="id-user" class="form-select" aria-label="id-user">
-                        <option value="{{user.id}}">{{user.id}}</option>
-                      </select>
-                      <div class="form-row">
-                        <div class="col-6">
-                        <div class="form-group">
-                        <label class="white-text" for="txt-id-modelo">Modelo  :</label>
-                        <select name="id-modelo" id="txt-id-modelo" class="form-select" aria-label="Seleccionar Modelo">
-                          {% if modelos %}
-                          {% for modelo in modelos %}
-                          <option value="{{modelo.id_modelo}}">{{modelo.nombre}}</option>
-                        </select> 
-                        <label class="white-text" for="txt-id-modelo">Precio  :</label>
-                        <br>
-                        <label>{{modelo.valor}}</label> 
-                        {% endfor %}
-                          {% endif %}
-                    </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-6">
-                        <label class="white-text" for="txt-id-talla">Talla  :</label>
-                        <select name="id-talla" id="txt-id-talla" class="form-select" aria-label="Seleccionar Talla">
-                            {% if tallas %}
-                            {% for talla in tallas %}
-                            <option value="{{talla.id_talla}}">{{talla.nombre}}</option>
-                            {% endfor %}
-                            {% endif %}
-                        </select>  
-                    </div>
-                  </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="col-6">
-                      <div class="form-group">
-                      <label class="white-text" for="txt-id-color">Color  :</label>
-                      <select name="id-color" id="txt-id-color" class="form-select" aria-label="Seleccionar Color">
-                        {% if colores %}
-                        {% for color in colores %}
-                        <option value="{{color.id_color}}">{{color.nombre}}</option>
-                        {% endfor %}
-                        {% endif %}
-                      </select>  
-                  </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-6">
-                      <label class="white-text" for="txt-id-tipo_producto">Tipo de Producto  :</label>
-                      <select name="id-tipo-producto" id="txt-id-tipo-producto" class="form-select" aria-label="Seleccionar Tipos de Productos">
-                          {% if tipo_productos %}
-                          {% for tipo_producto in tipo_productos %}
-                          <option value="{{tipo_producto.id_tipo_producto}}">{{tipo_producto.nombre}}</option>
-                          {% endfor %}
-                          {% endif %}
-                      </select>  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-6">
-                    <label class="white-text" for="txt-id-material">Material  :</label>
-                    <select name="id-material" id="txt-id-material" class="form-select" aria-label="Seleccionar Material">
-                        {% if materiales %}
-                        {% for material in materiales %}
-                        <option value="{{material.id_material}}">{{material.nombre}}</option>
-                        {% endfor %}
-                        {% endif %}
-                    </select>  
-                </div>
-              </div>
-                  </div>
-                  <div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
-                    <button type="submit" class="btn btn-md btn-outline-info">Guardar</button>
-                </div>
-
-                    </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-   
-   
-
-   
-   
-    <div class="card col-3" style="width: 18rem;">
-      <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 2 DALIA/DALIA (9).jpeg' %}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">DALIA</h5>
-        <p class="card-text">S / M / L</p>
-        <a href="#" class="btn btn-primary">Ir..</a>
-      </div>
-    </div>  
-
-    <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 2 DALIA/DALIA (9).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">DALIA</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-      <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 3 JAZMÍN/JASMÍN (7).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">JAZMÍN</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-  </div>
-  <div class="row">
-    <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 4 GERBERA/GERBERA (11).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">GERBERA</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-      <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 5 CALA/CALA (7).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"> CALA</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-      <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 6 AMELIA/AMELIA (1).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">AMELIA</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-  </div>
-  <div class="row">
-    <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 7 JACARANDA/JACARANDA (18).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">JACARANDA</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-      <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 8 FLORENCIA/FLORENCIA (10).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">FLORENCIA</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-      <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 9 CAPRI/CAPRI (9).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">CAPRI</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-  </div>
-  <div class="row">
-    <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 10 CORDILLERA/CORDILLERA (15).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">CORDILLERA</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-      <div class="card col-3" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'img/MODELOS/MODELO 11 MANGA GLOBO/MANGA GLOBO (8).jpeg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">MANGA GLOBO</h5>
-          <p class="card-text">S / M / L</p>
-          <a href="#" class="btn btn-primary">Ir..</a>
-        </div>
-      </div>
-       </div>
-     -->
- 
+  
 
 {% endblock %}
