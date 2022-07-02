@@ -145,15 +145,7 @@ def build_and_send2(to_list, user_mail, password_mail, smtp_host_mail, smtp_port
         connection = smtplib.SMTP(host=smtp_host_mail, port=smtp_port_mail)
         connection.starttls()
         connection.login(user_mail,password_mail)
-        #Load img
-        base_dir = Path(__file__).resolve().parent.parent
-        img_path = os.path.join(base_dir, 'static', 'img', 'icon', 'shopping-bag.png')
-        print('img_path: ', img_path)
-        with open(img_path, 'rb') as f:
-            img_data = f.read()
-        image = MIMEImage(img_data, 'jpeg')
-        image.add_header('Content-Id', '<shoppingbag>')
-        mimemsg.attach(image)
+    
         #Send mail
         connection.send_message(mimemsg)
         connection.quit()
