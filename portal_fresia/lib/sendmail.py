@@ -98,7 +98,7 @@ def build_token_recovery_pass(username, recovery_url):
         mail_body = mail_body.replace('#TOKEN_LINK', recovery_url)
         #Load email data web_shopping
         user_mail, password_mail, smtp_host_mail, smtp_port_mail = load_email_sender()
-        subject = 'Recovery Password'
+        subject = 'Recuperacion de clave secreta'
         #Send Mail
         build_and_send2(email, user_mail, password_mail, smtp_host_mail, smtp_port_mail, subject, mail_body)
         return 'Sended mail', True
@@ -126,7 +126,7 @@ def build_user_pass(username, token):
         mail_body = mail_body.replace('#PASSWORD', new_pass)        
         #Load email data web_shopping
         user_mail, password_mail, smtp_host_mail, smtp_port_mail = load_email_sender()
-        subject = 'Update Password'
+        subject = 'Actualizacion de clave secreta'
         #Send Mail
         build_and_send2(email, user_mail, password_mail, smtp_host_mail, smtp_port_mail, subject, mail_body)
         return 'Sended mail', True
