@@ -16,3 +16,4 @@ def enviar_correo(request):
     print('PASSWORD: ', password)    
     #Leer información del formulario
     build_and_send(mail, 'portalfresia@outlook.com', '@Portal123', 'm.outlook.com', '587', nombre)
+    
