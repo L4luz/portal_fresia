@@ -35,25 +35,25 @@
            <span aria-hidden="true">&times;</span>
          </button>
        </div>
-       <div class="modal-body">
+       <div class="modal-body"  style="background-color: rgb(235, 254, 247); font-family: Arial, Helvetica, sans-serif;">
          <img class="card-img-top" src="{% static productos.imagen %}" alt="Card image cap">
          <div class="row">
           <form method="POST" action=".">{% csrf_token %}
             <select style="display: none;" name="id-user" id="id-user" class="form-select" aria-label="id-user">
               <option value="{{user.id}}">{{user.id}}</option>
             </select>
-            <div class="form-row">
-              <div class="col-6">
+            <div class="form-row" size="40"  style="text-align: center; width: 100%;margin-top: 15px; align-items: center;align-content: center;">
+              <div class="col-12">
 
                 
              
-                <input name="modelo" id="modelo" style="display:none ;" value="{{productos.id_modelo}}">Modelo : {{productos.id_modelo}}</input>
+                <input name="modelo" id="modelo" style="display:none ; margin-top: 15px;" value="{{productos.id_modelo}}">Modelo : {{productos.id_modelo}}</input>
                 <br>
-                <input name="valor" id="valor"  style="display:none ;" value="{{productos.id_modelo.valor}}">Valor : {{productos.id_modelo.valor}}</input>
+                <input name="valor" id="valor"  style="display:none ; margin-top: 15px;" value="{{productos.id_modelo.valor}}">Valor : {{productos.id_modelo.valor}}</input>
               
             </div>
-          <div class="form-group">
-            <div class="col-6">
+          <div class="form-group" style="margin-top: 10px;">
+            <div class="col-12">
               <label class="white-text" for="txt-id-talla">Talla  :</label>
               <select name="id-talla" id="txt-id-talla" class="form-select" aria-label="Seleccionar Talla">
                   {% if tallas %}
@@ -66,8 +66,8 @@
         </div>
           </div>
 
-          <div class="form-row">
-            <div class="col-6">
+          <div class="form-row" size="40">
+            <div class="col-12">
             <div class="form-group">
             <label class="white-text" for="txt-id-color">Color  :</label>
             <select name="id-color" id="txt-id-color" class="form-select" aria-label="Seleccionar Color">
@@ -80,7 +80,7 @@
         </div>
         </div>
         <div class="form-group">
-          <div class="col-6">
+          <div class="col-12">
             <label class="white-text" for="txt-id-tipo_producto">Tipo de Producto  :</label>
             <select name="id-tipo-producto" id="txt-id-tipo-producto" class="form-select" aria-label="Seleccionar Tipos de Productos">
                 {% if tipo_productos %}
@@ -92,7 +92,7 @@
         </div>
       </div>
       <div class="form-group">
-        <div class="col-6">
+        <div class="col-12">
           <label class="white-text" for="txt-id-material">Material  :</label>
           <select name="id-material" id="txt-id-material" class="form-select" aria-label="Seleccionar Material">
               {% if materiales %}
@@ -103,10 +103,14 @@
           </select>  
       </div>
     </div>
+    
         </div>
+        {% if user.is_authenticated %}
         <div class="form-group" style="margin-left: 45%;margin-top: 50px;margin-bottom: 50px;">
-          <button type="submit" class="btn btn-md btn-outline-info">Añadir al Carrito</button>
+          <button style="background-color: darkseagreen; color: aliceblue;" type="submit" class="btn btn-md btn-outline-info">Añadir al Carrito</button>
       </div>
+        {% endif %}
+        <h5 style="margin-top: 20px;">Debe iniciar sesión para realizar la compra</h5>
 
           </form>
       </div>

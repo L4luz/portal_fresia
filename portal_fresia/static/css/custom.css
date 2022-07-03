@@ -169,3 +169,24 @@ footer p{
 	margin-left: 300px;
 	margin-top: 30px;
 }
+
+.modal-body{
+	align-items: center;
+	align-content: center;
+	text-align: center;
+	width: 100%;
+}
+
+.form-row{
+	align-items: center;
+	align-content: center;
+	text-align: center;
+	width: 100%;
+}
+
+.form-row{
+	align-items: center;
+	align-content: center;
+	text-align: center;
+	width: 100%;
+}
